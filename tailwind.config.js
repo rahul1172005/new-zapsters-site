@@ -42,6 +42,8 @@ export default {
                 'orbit': 'orbit 20s linear infinite',
                 'float': 'float 6s ease-in-out infinite',
                 'pulse-beam': 'pulseBeam 4s ease-in-out infinite',
+                'spin-slow': 'spin 4s linear infinite',
+                'spin-slower': 'spin 8s linear infinite',
             },
             keyframes: {
                 fadeIn: {

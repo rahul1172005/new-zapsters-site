@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Github } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logo from '../../assets/pic3.png?inline';
 
 export const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -13,7 +14,7 @@ export const Navbar = () => {
                 <div className="flex items-center">
                     <Link to="/" className="flex items-center group relative">
                         <img
-                            src="/src/assets/pic3.png"
+                            src={logo}
                             alt="Zapsters Logo"
                             className="w-80 h-80 object-contain relative translate-x-0 translate-y-3"
                         />
@@ -24,6 +25,7 @@ export const Navbar = () => {
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
                     <Link to="/about" className="hover:text-red-500 transition-colors">About</Link>
                     <Link to="/services" className="hover:text-red-500 transition-colors">Services</Link>
+                    <Link to="/testimonials" className="hover:text-red-500 transition-colors">Testimonials</Link>
                     <Link to="/contact" className="hover:text-red-500 transition-colors">Contact</Link>
                 </div>
 
@@ -54,7 +56,7 @@ export const Navbar = () => {
                         className="fixed inset-0 z-40 bg-[#050505]/95 backdrop-blur-3xl pt-32 px-6 md:hidden flex flex-col"
                     >
                         <div className="flex flex-col space-y-8">
-                            {['About', 'Services', 'Contact'].map((item) => (
+                            {['About', 'Services', 'Testimonials', 'Contact'].map((item) => (
                                 <Link
                                     key={item}
                                     to={`/${item.toLowerCase()}`}

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { LazyVideo } from '../LazyVideo';
 
 export const HeroCards = () => {
     const [activePoint, setActivePoint] = useState('Leadership');
@@ -10,10 +11,51 @@ export const HeroCards = () => {
 
 
                 <div className="mb-12 mt-32 text-center">
-                    <h2 className="text-5xl md:text-[5rem] font-semibold text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-400 tracking-tight drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)] leading-none">
+                    <h2 className="text-5xl md:text-[5rem] font-semibold text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-400 tracking-tight drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)] leading-none text-center justify-center flex">
                         Why we lead ?
                     </h2>
                 </div>
+
+                {/* Manifesto Card */}
+                <div className="max-w-6xl mx-auto mb-6">
+                    <div
+                        className="group relative rounded-[40px] overflow-hidden bg-[#050505] border-[2px] border-[#0a0a0a] ring-1 ring-[#1a1a1a]/60 shadow-2xl p-8 md:p-12"
+                        style={{ boxShadow: '0 0 0 1px rgba(40,40,40,0.6), 0 0 0 2px rgba(20,20,20,0.4), 0 20px 50px rgba(0,0,0,0.9)' }}
+                    >
+                        {/* Background Pattern */}
+                        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" />
+                        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
+
+                        {/* Abstract Shape Overlay */}
+                        {/* Abstract Shape Overlay - Like Growth Points */}
+                        <div className="absolute right-[-50px] top-[-50px] w-[700px] h-[700px] pointer-events-none mix-blend-screen opacity-50 hidden md:block rotate-12">
+                            <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-2xl">
+                                <defs>
+                                    <linearGradient id="manifesto-grad" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0%" stopColor="#7f1d1d" /> {/* Red-900 */}
+                                        <stop offset="100%" stopColor="#000000" />
+                                    </linearGradient>
+                                </defs>
+                                <path d="M40,80 C20,40 60,10 100,30 C150,50 160,90 140,130 C120,170 80,180 50,150 C20,120 10,100 40,80" fill="url(#manifesto-grad)" />
+                            </svg>
+                        </div>
+
+                        <div className="relative z-10 flex flex-col md:flex-row gap-10 items-start md:items-center">
+                            <div className="flex-1">
+                                <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 leading-tight">
+                                    In an age of digital noise, <br />
+                                    <span className="text-gray-500">we design the signal.</span>
+                                </h3>
+                            </div>
+                            <div className="flex-1">
+                                <p className="text-lg md:text-xl text-gray-400 font-light leading-relaxed">
+                                    <strong className="text-white font-bold">Zapsters</strong> was born from a singular obsession: perfection. We realized that most digital agencies were stuck in the past building websites when they should be building ecosystems, designing pages when they should be crafting experiences.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
 
 
@@ -65,8 +107,8 @@ export const HeroCards = () => {
                                                 className={`relative h-14 flex items-center justify-end cursor-pointer transition-all duration-300 ${isActive ? '-translate-x-4' : ''}`}
                                                 onClick={() => setActivePoint(item)}
                                             >
-                                                {/* Optic Cable Line */}
-                                                <div className="absolute right-[100%] top-1/2 -translate-y-1/2 h-[1px] bg-white/20 transition-all duration-500 hidden md:block" style={{ width: isActive ? '80px' : '60px' }}>
+                                                {/* Optic Cable Line - Adjusted to touch button (180px offset) */}
+                                                <div className="absolute right-[180px] top-1/2 -translate-y-1/2 h-[1px] bg-white/20 transition-all duration-500 hidden md:block" style={{ width: isActive ? '140px' : '120px' }}>
                                                     {/* The moving light packet */}
                                                     {isActive && (
                                                         <motion.div
@@ -102,11 +144,7 @@ export const HeroCards = () => {
                                                         h-11 w-11 rounded-full flex items-center justify-center transition-all duration-500
                                                         ${isActive ? 'bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)] rotate-180' : 'bg-white/10 border border-white/10'}
                                                     `}>
-                                                        {isActive ? (
-                                                            null
-                                                        ) : (
-                                                            <div className="w-2 h-2 bg-white rounded-full" />
-                                                        )}
+                                                        {/* Dot removed as per request */}
                                                     </div>
                                                 </div>
                                             </div>
@@ -140,7 +178,10 @@ export const HeroCards = () => {
 
                         {/* Bottom Glass Panel - Bottom Left (Frosty Glass) */}
                         <div className="relative md:absolute bottom-auto md:bottom-10 left-6 md:left-10 z-30 mt-8 md:mt-0 px-6 md:px-0 mb-8 md:mb-0">
-                            <div className="w-[220px] h-[120px] rounded-[32px] border border-white/10 bg-white/5 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.3)] overflow-hidden relative group/panel flex flex-col justify-between p-5">
+                            <div
+                                className="w-[220px] h-[120px] rounded-[32px] bg-[#050505] border-[2px] border-[#0a0a0a] ring-1 ring-[#1a1a1a]/60 overflow-hidden relative group/panel flex flex-col justify-between p-5 shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                                style={{ boxShadow: '0 0 0 1px rgba(40,40,40,0.6), 0 0 0 2px rgba(20,20,20,0.4), 0 20px 50px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 2px 4px rgba(255,255,255,0.03), inset 0 -1px 0 rgba(255,255,255,0.02)' }}
+                            >
                                 {/* Edge Highlight */}
                                 <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-50" />
 
@@ -175,15 +216,18 @@ export const HeroCards = () => {
 
                                 {/* Visor - Glossy Black Rounded Rect */}
                                 <div className="absolute w-[180px] h-[110px] bg-black rounded-[36px] border-[3px] border-[#d1d1d6] shadow-[inset_0_10px_20px_rgba(255,255,255,0.1),_0_10px_30px_rgba(0,0,0,0.5)] flex items-center justify-center overflow-hidden z-10 box-border">
-                                    {/* Video Background */}
-                                    <video
-                                        className="absolute inset-0 w-full h-full object-cover"
-                                        src="/src/assets/video5.mp4"
-                                        autoPlay
-                                        loop
-                                        muted
-                                        playsInline
-                                    />
+                                    {/* Video Background - Optimized */}
+                                    <div className="absolute inset-0 w-full h-full">
+                                        <LazyVideo
+                                            className="w-full h-full object-cover"
+                                            src="/assets/video5.mp4"
+                                            autoPlay
+                                            loop
+                                            muted
+                                            playsInline
+                                            poster="/assets/video5-poster.jpg"
+                                        />
+                                    </div>
 
                                     {/* Red Interior Ambiance Overlay */}
                                     <div className="absolute inset-0 bg-gradient-to-b from-[#1a0505] to-[#3f0000] opacity-30" />

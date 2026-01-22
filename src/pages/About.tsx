@@ -1,19 +1,89 @@
-import { useRef } from 'react';
+
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
-import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, useMotionValue, animate } from 'framer-motion';
+import { useState, useEffect, useCallback } from 'react';
 
-export const About = () => {
-    const teamScrollRef = useRef<HTMLDivElement>(null);
+import pic11 from '../assets/pic11.jpg';
+import pic12 from '../assets/pic12.jpg';
+import pic13 from '../assets/pic13.jpg';
+import pic14 from '../assets/pic14.jpg';
+import pic112 from '../assets/pic112.png';
+import pic113 from '../assets/pic113.png';
+import pic115 from '../assets/pic115.png';
+import pic118 from '../assets/pic118.jpg';
+import pic222 from '../assets/pic222.jpg';
+import pic223 from '../assets/pic223.jpg';
 
-    const scrollTeam = (direction: 'left' | 'right') => {
-        if (teamScrollRef.current) {
-            const { current } = teamScrollRef;
-            const scrollAmount = direction === 'left' ? -400 : 400;
-            current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        }
-    };
+// Team Data
+// Team Data
+const teamMembers = [
+    { id: 1, name: "Raghunandhan", role: "Vice President", image: pic222 },
+    { id: 6, name: "Dhaya", role: "Developer", image: pic223 },
+    { id: 2, name: "Praveen N", role: "3D Animator & Designer", image: pic222 },
+    { id: 8, name: "Dakshini", role: "Developer", image: pic223 },
+    { id: 3, name: "Rithik Balaji", role: "UI/UX Designer", image: pic222 },
+    { id: 4, name: "Vishal R", role: "3D Animator & Designer", image: pic222 },
+    { id: 5, name: "Sanjay Akash", role: "Developer", image: pic222 },
+
+    { id: 7, name: "Sadhanan", role: "Data Analyst", image: pic223 },
+
+];
+
+const TEAM_CARD_WIDTH_DESKTOP = 260;
+const TEAM_CARD_WIDTH_MOBILE = 220;
+const TEAM_GAP = 32;
+const TEAM_SET_LENGTH = teamMembers.length;
+
+const About = () => {
+    // --- CAROUSEL LOGIC ---
+    const [currentIndex, setCurrentIndex] = useState(TEAM_SET_LENGTH);
+    const [isAnimating, setIsAnimating] = useState(false);
+    const [cardWidth, setCardWidth] = useState(TEAM_CARD_WIDTH_DESKTOP);
+    const x = useMotionValue(0);
+
+    useEffect(() => {
+        const updateWidth = () => {
+            const newWidth = window.innerWidth < 768 ? TEAM_CARD_WIDTH_MOBILE : TEAM_CARD_WIDTH_DESKTOP;
+            setCardWidth(newWidth);
+            // Instant reset
+            x.set(-currentIndex * (newWidth + TEAM_GAP));
+        };
+        updateWidth();
+        window.addEventListener('resize', updateWidth);
+        return () => window.removeEventListener('resize', updateWidth);
+    }, [currentIndex, x]);
+
+    const moveCarousel = useCallback((direction: 'left' | 'right') => {
+        if (isAnimating) return;
+        setIsAnimating(true);
+
+        const step = cardWidth + TEAM_GAP;
+        const newIndex = direction === 'right' ? currentIndex + 1 : currentIndex - 1;
+
+        setCurrentIndex(newIndex);
+
+        animate(x, -newIndex * step, {
+            type: "spring", stiffness: 280, damping: 30, mass: 1,
+            onComplete: () => {
+                setIsAnimating(false);
+                if (newIndex >= 3 * TEAM_SET_LENGTH) {
+                    const resetIndex = newIndex - TEAM_SET_LENGTH;
+                    setCurrentIndex(resetIndex);
+                    x.set(-resetIndex * step);
+                } else if (newIndex >= 2 * TEAM_SET_LENGTH) { // Just finished Set 2
+                    const resetIndex = newIndex - TEAM_SET_LENGTH;
+                    setCurrentIndex(resetIndex);
+                    x.set(-resetIndex * step);
+                } else if (newIndex < TEAM_SET_LENGTH) {
+                    const resetIndex = newIndex + TEAM_SET_LENGTH;
+                    setCurrentIndex(resetIndex);
+                    x.set(-resetIndex * step);
+                }
+            }
+        });
+    }, [currentIndex, cardWidth, isAnimating, x]);
+
 
     return (
         <div className="bg-black min-h-screen text-white selection:bg-red-500/30 selection:text-white overflow-x-hidden flex flex-col font-sans w-full">
@@ -66,11 +136,23 @@ export const About = () => {
                 {/* --- NARRATIVE SECTION --- */}
                 <section className="py-20 md:py-40 container mx-auto px-6 max-w-[1400px]">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20">
-                        <div>
-                            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-8">
+                        <div className="flex flex-col h-full">
+                            <h2 className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-400 drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)] tracking-tight mb-4 md:mb-6 flex-shrink-0">
                                 In an age of digital noise, <br />
                                 <span className="text-gray-500">we design the signal.</span>
                             </h2>
+
+                            {/* Signal/Noise Visual Card - Adapts to Text Height */}
+                            <div className="group relative rounded-[32px] overflow-hidden border border-white/10 shadow-2xl flex-1 w-full min-h-[300px] lg:min-h-0">
+                                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
+                                <img
+                                    src={pic118}
+                                    alt="Digital Signal"
+                                    className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-out"
+                                />
+                                {/* Abstract Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+                            </div>
                         </div>
                         <div className="space-y-6 md:space-y-8 text-lg md:text-xl text-gray-400 font-light leading-relaxed">
                             <p>
@@ -95,7 +177,7 @@ export const About = () => {
                         >
                             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                             <div className="relative z-10">
-                                <span className="text-6xl md:text-9xl font-bold text-white tracking-tighter block mb-4 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] group-hover:scale-105 transition-transform duration-500 origin-left">10+</span>
+                                <span className="text-6xl md:text-9xl font-bold text-white tracking-tighter block mb-4 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] group-hover:scale-105 transition-transform duration-500 origin-left">1+</span>
                                 <span className="text-sm md:text-xl text-gray-400 uppercase tracking-widest group-hover:text-white transition-colors">Years of Innovation</span>
                                 <p className="mt-6 md:mt-8 text-sm md:text-base text-gray-500 max-w-md group-hover:text-gray-400 transition-colors">Decades of combined experience pushing the boundaries of what's possible on the web.</p>
                             </div>
@@ -108,7 +190,7 @@ export const About = () => {
                             <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-[60px] -translate-y-1/2 translate-x-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                             <div className="relative z-10 flex flex-col justify-between h-full">
                                 <div>
-                                    <span className="text-4xl md:text-6xl font-bold text-white tracking-tighter block mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:scale-105 transition-transform duration-500 origin-left">$500M+</span>
+                                    <span className="text-4xl md:text-6xl font-bold text-white tracking-tighter block mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:scale-105 transition-transform duration-500 origin-left">₹4Lakh+</span>
                                     <span className="text-xs md:text-sm text-gray-400 uppercase tracking-widest group-hover:text-white transition-colors">Client Value Created</span>
                                 </div>
                             </div>
@@ -121,7 +203,7 @@ export const About = () => {
                             <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-[60px] -translate-y-1/2 translate-x-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                             <div className="relative z-10 flex flex-col justify-between h-full">
                                 <div>
-                                    <span className="text-4xl md:text-6xl font-bold text-white tracking-tighter block mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:scale-105 transition-transform duration-500 origin-left">50+</span>
+                                    <span className="text-4xl md:text-6xl font-bold text-white tracking-tighter block mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:scale-105 transition-transform duration-500 origin-left">20+</span>
                                     <span className="text-xs md:text-sm text-gray-400 uppercase tracking-widest group-hover:text-white transition-colors">Global Partners</span>
                                 </div>
                             </div>
@@ -142,114 +224,147 @@ export const About = () => {
                 </section>
 
                 {/* --- LEADERSHIP DEEP DIVE --- */}
-                <section className="py-20 md:py-40 border-t border-white/10">
+                <section className="py-20 md:py-32 border-t border-white/10">
                     <div className="container mx-auto px-6 max-w-[1400px]">
-                        <div className="mb-16 md:mb-32">
+                        <div className="mb-16 md:mb-24 text-center">
                             <span className="text-red-500 font-bold tracking-widest uppercase text-sm mb-4 block">The Visionaries</span>
-                            <h2 className="text-4xl md:text-6xl font-bold text-white">Meet the Architects.</h2>
+                            <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-400 drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]">Meet the Architects.</h2>
                         </div>
 
-                        {/* Founder 1 */}
-                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-center mb-24 md:mb-40">
-                            <div className="lg:col-span-5 relative group order-2 lg:order-1">
-                                <div className="aspect-[3/4] overflow-hidden rounded-[2px] relative z-10">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800"
-                                        alt="Sabari Raja"
-                                        className="w-full h-full object-cover filter grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700"
-                                        loading="lazy"
-                                    />
-                                </div>
-                                {/* Decorative elements */}
-                                <div className="absolute -top-6 md:-top-10 -left-6 md:-left-10 w-24 md:w-40 h-24 md:h-40 border-[0.5px] border-white/20 z-0" />
-                                <div className="absolute -bottom-6 md:-bottom-10 -right-6 md:-right-10 w-full h-full border-[0.5px] border-white/10 z-0 bg-[#050505] -z-10" />
-                            </div>
-                            <div className="lg:col-span-1 hidden lg:block order-2" /> {/* Spacer */}
-                            <div className="lg:col-span-6 order-1 lg:order-3">
-                                <h3 className="text-5xl md:text-8xl font-bold text-white tracking-tighter mb-2">Sabari Raja</h3>
-                                <p className="text-red-500 text-lg md:text-xl font-mono uppercase tracking-widest mb-8 md:mb-10">Founder & CEO</p>
-
-                                <div className="space-y-6 md:space-y-8 text-lg md:text-xl text-gray-400 font-light leading-relaxed border-l-2 border-white/10 pl-6 md:pl-8">
-                                    <p>
-                                        Sabari is the driving force behind the Zapsters vision. With a background in scalable architecture and a passion for minimalist design, he founded Zapsters to bridge the gap between engineering and art.
-                                    </p>
-                                    <p>
-                                        "We are not here to compete. We are here to set the standard. Every pixel, every line of code, every interaction must be intentional. That is the Zapsters way."
-                                    </p>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
+                            {/* Founder 1: Sabari Raja */}
+                            <div className="group relative">
+                                <div className="relative overflow-hidden rounded-2xl bg-[#0a0a0a] border border-white/10 transition-all duration-500 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+                                    <div className="aspect-[3/4] overflow-hidden">
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60 z-10" />
+                                        <img
+                                            src={pic113}
+                                            alt="Sabari Raja"
+                                            className="w-full h-full object-cover filter grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                    <div className="absolute bottom-0 left-0 w-full p-6 z-20">
+                                        <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                            <h3 className="text-2xl font-bold text-white tracking-tight mb-1">Sabari Raja</h3>
+                                            <p className="text-red-500 text-xs font-mono uppercase tracking-widest mb-4">Founder & CEO</p>
+                                            <p className="text-gray-300 text-sm leading-relaxed font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 bg-black/60 backdrop-blur-sm p-3 rounded-lg">
+                                                Bridging the gap between scalable engineering and minimalist art to set a new standard for digital ecosystems.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        {/* Founder 2 */}
-                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-center">
-                            <div className="lg:col-span-6 order-1 lg:order-1">
-                                <h3 className="text-5xl md:text-8xl font-bold text-white tracking-tighter mb-2">Rahul</h3>
-                                <p className="text-red-500 text-lg md:text-xl font-mono uppercase tracking-widest mb-8 md:mb-10">Co-Founder & CTO</p>
-
-                                <div className="space-y-6 md:space-y-8 text-lg md:text-xl text-gray-400 font-light leading-relaxed border-l-2 border-white/10 pl-6 md:pl-8">
-                                    <p>
-                                        Rahul leads the technological strategy at Zapsters. His expertise in AI, cloud infrastructure, and security ensures that our solutions are as robust as they are beautiful.
-                                    </p>
-                                    <p>
-                                        "The most beautiful code is invisible. It works so seamlessly that the user forgets it's there. That is the level of mastery we strive for in every deployment."
-                                    </p>
+                            {/* Founder 2: Rahul */}
+                            <div className="group relative">
+                                <div className="relative overflow-hidden rounded-2xl bg-[#0a0a0a] border border-white/10 transition-all duration-500 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+                                    <div className="aspect-[3/4] overflow-hidden">
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60 z-10" />
+                                        <img
+                                            src={pic115}
+                                            alt="Rahul"
+                                            className="w-full h-full object-cover filter grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                    <div className="absolute bottom-0 left-0 w-full p-6 z-20">
+                                        <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                            <h3 className="text-2xl font-bold text-white tracking-tight mb-1">Rahul</h3>
+                                            <p className="text-red-500 text-xs font-mono uppercase tracking-widest mb-4">Co-Founder & CTO</p>
+                                            <p className="text-gray-300 text-sm leading-relaxed font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 bg-black/60 backdrop-blur-sm p-3 rounded-lg">
+                                                Architect of the invisible. Ensuring every interaction is powered by robust, cutting-edge AI and seamless infrastructure.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="lg:col-span-1 hidden lg:block order-2" /> {/* Spacer */}
-                            <div className="lg:col-span-5 relative group order-2 lg:order-3">
-                                <div className="aspect-[3/4] overflow-hidden rounded-[2px] relative z-10">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800"
-                                        alt="Rahul"
-                                        className="w-full h-full object-cover filter grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700"
-                                        loading="lazy"
-                                    />
+
+                            {/* Founder 3: Praveen S */}
+                            <div className="group relative">
+                                <div className="relative overflow-hidden rounded-2xl bg-[#0a0a0a] border border-white/10 transition-all duration-500 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+                                    <div className="aspect-[3/4] overflow-hidden">
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60 z-10" />
+                                        <img
+                                            src={pic112}
+                                            alt="Praveen S"
+                                            className="w-full h-full object-cover filter grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                    <div className="absolute bottom-0 left-0 w-full p-6 z-20">
+                                        <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                            <h3 className="text-2xl font-bold text-white tracking-tight mb-1">Praveen S</h3>
+                                            <p className="text-red-500 text-xs font-mono uppercase tracking-widest mb-4">CFO, Marketing Manager</p>
+                                            <p className="text-gray-300 text-sm leading-relaxed font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 bg-black/60 backdrop-blur-sm p-3 rounded-lg">
+                                                The strategist of value. Aligning financial vision with market presence to build systems that sustain long-term success.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                                {/* Decorative elements */}
-                                <div className="absolute -bottom-6 md:-bottom-10 -right-6 md:-right-10 w-24 md:w-40 h-24 md:h-40 border-[0.5px] border-white/20 z-0" />
-                                <div className="absolute -top-6 md:-top-10 -left-6 md:-left-10 w-full h-full border-[0.5px] border-white/10 z-0 bg-[#050505] -z-10" />
                             </div>
                         </div>
                     </div>
                 </section>
 
-                {/* --- ZAPSTERS TEAM SECTION --- */}
+                {/* --- ZAPSTERS TEAM SECTION (Manual Carousel) --- */}
                 <section className="py-20 md:py-32 border-t border-white/10 bg-[#050505]">
                     <div className="container mx-auto px-6 max-w-[1400px]">
-                        <div className="text-center mb-20">
-                            <span className="text-red-500 font-bold tracking-widest uppercase text-sm mb-4 block">Our People</span>
-                            <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter">ZAPSTERS TEAM</h2>
+                        {/* Header + Controls - Flex Column on Mobile */}
+                        <div className="flex flex-col md:flex-row items-center md:items-end justify-center relative mb-20 z-20">
+                            <div className="text-center">
+                                <span className="text-red-500 font-bold tracking-widest uppercase text-sm mb-4 block">Our People</span>
+                                <h2 className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-400 drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)] tracking-tighter">ZAPSTERS TEAM</h2>
+                            </div>
+
+                            {/* Arrow Controls (Adapted from Projects) */}
+                            <div className="flex gap-4 mt-8 md:mt-0 relative md:absolute md:bottom-2 md:right-0">
+                                <button
+                                    onClick={() => moveCarousel('left')}
+                                    disabled={isAnimating}
+                                    className={`w-12 h-12 md:w-16 md:h-16 border border-white/10 rounded-full flex items-center justify-center text-white/50 transition-colors group ${isAnimating ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/10 hover:text-white'}`}
+                                >
+                                    <span className="group-active:scale-90 transition-transform text-xl md:text-2xl">←</span>
+                                </button>
+                                <button
+                                    onClick={() => moveCarousel('right')}
+                                    disabled={isAnimating}
+                                    className={`w-12 h-12 md:w-16 md:h-16 border border-white/10 rounded-full flex items-center justify-center text-white/50 transition-colors group ${isAnimating ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/10 hover:text-white'}`}
+                                >
+                                    <span className="group-active:scale-90 transition-transform text-xl md:text-2xl">→</span>
+                                </button>
+                            </div>
                         </div>
 
-                        {/* Carousel Controls */}
-                        {/* Continuous Styling Marquee for Team */}
-                        <div className="relative w-full overflow-hidden">
-                            <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-[#050505] via-[#050505]/80 to-transparent z-20 pointer-events-none" />
-                            <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-[#050505] via-[#050505]/80 to-transparent z-20 pointer-events-none" />
+                        {/* Carousel Touch Track */}
+                        <div className="relative w-full overflow-visible">
+                            {/* Removed gradient vignette as requested */}
+                            {/* <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-[#050505] via-[#050505]/80 to-transparent z-20 pointer-events-none" /> */}
+                            {/* <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-[#050505] via-[#050505]/80 to-transparent z-20 pointer-events-none" /> */}
 
                             <motion.div
-                                className="flex gap-8"
-                                animate={{ x: ["0%", "-50%"] }}
-                                transition={{ duration: 40, ease: "linear", repeat: Infinity }}
+                                className="flex gap-8 w-fit pl-6 md:pl-0 mx-auto"
+                                style={{ x }}
                             >
-                                {[...Array(2)].map((_, setIndex) => (
-                                    <div key={setIndex} className="flex gap-8">
-                                        {[...Array(10)].map((_, i) => (
-                                            <div key={i} className="min-w-[300px] md:min-w-[350px] group relative">
-                                                <div className="aspect-[3/4] overflow-hidden rounded-2xl bg-white/5 relative z-10 border border-white/10">
-                                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 opacity-60 group-hover:opacity-80 transition-opacity" />
-                                                    <img
-                                                        src={`https://images.unsplash.com/photo-${1500000000000 + i}?auto=format&fit=crop&q=80&w=600`}
-                                                        alt={`Team Member ${i + 1}`}
-                                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-105"
-                                                    />
-                                                    <div className="absolute bottom-0 left-0 w-full p-6 z-20 translate-y-2 group-hover:translate-y-0 transition-transform">
-                                                        <h3 className="text-xl font-bold text-white mb-1">Team Member {setIndex * 10 + i + 1}</h3>
-                                                        <p className="text-red-500 text-xs tracking-widest uppercase">Specialist Role</p>
-                                                    </div>
-                                                </div>
+                                {/* 4 Sets for Infinite Loop */}
+                                {[...teamMembers, ...teamMembers, ...teamMembers, ...teamMembers].map((member, i) => (
+                                    <div
+                                        key={i}
+                                        style={{ width: cardWidth, minWidth: cardWidth }}
+                                        className="group relative flex-shrink-0"
+                                    >
+                                        <div className="aspect-[3/4] overflow-hidden rounded-2xl bg-white/5 relative z-10 border border-white/10">
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 opacity-60 group-hover:opacity-80 transition-opacity" />
+                                            <img
+                                                src={member.image}
+                                                alt={member.name}
+                                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-105"
+                                            />
+                                            <div className="absolute bottom-0 left-0 w-full p-6 z-20 translate-y-2 group-hover:translate-y-0 transition-transform">
+                                                <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
+                                                <p className="text-red-500 text-xs tracking-widest uppercase">{member.role}</p>
                                             </div>
-                                        ))}
+                                        </div>
                                     </div>
                                 ))}
                             </motion.div>
@@ -260,16 +375,16 @@ export const About = () => {
                 {/* --- IMAGE COLLAGE (Life at Zapsters) --- */}
                 <section className="py-20 overflow-hidden">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-6 max-w-[1600px] mx-auto">
-                        <div className="aspect-square bg-white/5 rounded-2xl overflow-hidden mt-10 md:mt-20"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover opacity-50 hover:opacity-100 transition-opacity duration-500" alt="Office" loading="lazy" /></div>
-                        <div className="aspect-[3/4] bg-white/5 rounded-2xl overflow-hidden"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover opacity-50 hover:opacity-100 transition-opacity duration-500" alt="Meeting" loading="lazy" /></div>
-                        <div className="aspect-[3/4] bg-white/5 rounded-2xl overflow-hidden mt-16 md:mt-32"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover opacity-50 hover:opacity-100 transition-opacity duration-500" alt="Team" loading="lazy" /></div>
-                        <div className="aspect-square bg-white/5 rounded-2xl overflow-hidden mt-6 md:mt-10"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover opacity-50 hover:opacity-100 transition-opacity duration-500" alt="Work" loading="lazy" /></div>
+                        <div className="aspect-square bg-white/5 rounded-2xl overflow-hidden mt-10 md:mt-20"><img src={pic11} className="w-full h-full object-cover opacity-50 hover:opacity-100 transition-opacity duration-500" alt="Office" loading="lazy" /></div>
+                        <div className="aspect-[3/4] bg-white/5 rounded-2xl overflow-hidden"><img src={pic12} className="w-full h-full object-cover opacity-50 hover:opacity-100 transition-opacity duration-500" alt="Meeting" loading="lazy" /></div>
+                        <div className="aspect-[3/4] bg-white/5 rounded-2xl overflow-hidden mt-16 md:mt-32"><img src={pic13} className="w-full h-full object-cover opacity-50 hover:opacity-100 transition-opacity duration-500" alt="Team" loading="lazy" /></div>
+                        <div className="aspect-square bg-white/5 rounded-2xl overflow-hidden mt-6 md:mt-10"><img src={pic14} className="w-full h-full object-cover opacity-50 hover:opacity-100 transition-opacity duration-500" alt="Work" loading="lazy" /></div>
                     </div>
                 </section>
 
                 {/* --- CTA --- */}
                 <section className="py-24 md:py-40 container mx-auto px-6 text-center">
-                    <h2 className="text-4xl md:text-8xl font-bold text-white tracking-tighter mb-8 md:mb-12">
+                    <h2 className="text-4xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-400 drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)] tracking-tighter mb-8 md:mb-12">
                         Ready to define the future?
                     </h2>
                     <a href="/contact" className="inline-block bg-red-600 text-white px-10 md:px-16 py-5 md:py-6 rounded-full font-bold text-lg md:text-xl hover:bg-red-700 transition-all tracking-wide shadow-[0_0_20px_rgba(220,38,38,0.4)]">
@@ -279,6 +394,9 @@ export const About = () => {
             </main>
 
             <Footer />
-        </div>
+        </div >
     );
 };
+
+
+export default About;

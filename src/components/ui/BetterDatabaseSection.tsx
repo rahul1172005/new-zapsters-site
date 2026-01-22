@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
+import cardTexture from '../../assets/card-texture.png';
+import adobeIcon from '../../assets/pic8 (1).png';
+import speedometer from '../../assets/speedometer.png';
+import globeDots from '../../assets/globe-dots.png';
 
 
-import Link from 'react-router-dom';
+
 
 export const BetterDatabaseSection = () => {
     return (
@@ -28,29 +32,23 @@ export const BetterDatabaseSection = () => {
                             {/* Custom Texture Layer */}
                             <>
                                 <div className="absolute inset-0 
-    bg-[url('/card-texture.png')] 
     opacity-50 
     mix-blend-overlay 
     pointer-events-none"
+                                    style={{ backgroundImage: `url(${cardTexture})` }}
                                 />
                                 <div className="absolute inset-0 
-    bg-[url('/card-texture.png')] 
     opacity-5 
     mix-blend-hard-light 
     pointer-events-none"
+                                    style={{ backgroundImage: `url(${cardTexture})` }}
                                 />
                             </>
 
-                            {/* Volumetric Ray Light Effect */}
-                            <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] pointer-events-none">
-                                {/* Conical Ray */}
-                                <div className="absolute inset-0 bg-[conic-gradient(from_180deg_at_50%_0%,transparent_0deg,rgba(220,20,60,0.1)_20deg,rgba(220,20,60,0.2)_25deg,rgba(220,20,60,0.1)_30deg,transparent_50deg)] rotate-[155deg] blur-[30px] opacity-60" />
-                                {/* Central Beam */}
-                                <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-red-900/10 via-red-900/5 to-transparent blur-3xl opacity-50" />
+                            {/* Optimized Volumetric Light */}
+                            <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[400px] pointer-events-none opacity-40">
+                                <div className="absolute inset-0 bg-red-600/10 blur-[80px]" />
                             </div>
-
-                            {/* 1. Main Central Glow (Dark Red) - Behind Icons */}
-                            <div className="absolute top-[30%] left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-[radial-gradient(circle,rgba(220,20,60,0.15)_0%,transparent_70%)] blur-[60px] pointer-events-none" />
 
                             {/* 2. Bottom Ambient Haze (Red Foundation) */}
                             <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-[#3f0000] via-[#1a0505] to-transparent opacity-90 pointer-events-none" />
@@ -66,6 +64,7 @@ export const BetterDatabaseSection = () => {
                                         src="https://cdn.simpleicons.org/flutter/42A5F5"
                                         alt="Flutter"
                                         className="w-10 h-10 drop-shadow-[0_0_15px_rgba(66,165,245,0.4)]"
+                                        loading="lazy"
                                     />
                                 </div>
 
@@ -75,6 +74,7 @@ export const BetterDatabaseSection = () => {
                                         src="https://cdn.simpleicons.org/react/61DAFB"
                                         alt="React"
                                         className="w-10 h-10 drop-shadow-[0_0_15px_rgba(97,218,251,0.4)] animate-[spin_10s_linear_infinite]"
+                                        loading="lazy"
                                     />
                                 </div>
 
@@ -84,6 +84,7 @@ export const BetterDatabaseSection = () => {
                                         src="https://cdn.simpleicons.org/nextdotjs/white"
                                         alt="Next.js"
                                         className="w-10 h-10 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]"
+                                        loading="lazy"
                                     />
                                 </div>
                             </div>
@@ -105,28 +106,24 @@ export const BetterDatabaseSection = () => {
                             {/* Custom Texture Layer */}
                             <>
                                 <div className="absolute inset-0 
-    bg-[url('/card-texture.png')] 
     opacity-50 
     mix-blend-overlay 
     pointer-events-none"
+                                    style={{ backgroundImage: `url(${cardTexture})` }}
                                 />
                                 <div className="absolute inset-0 
-    bg-[url('/card-texture.png')] 
     opacity-5 
     mix-blend-hard-light 
     pointer-events-none"
+                                    style={{ backgroundImage: `url(${cardTexture})` }}
                                 />
                             </>
 
 
-                            {/* Volumetric Ray Light Effect */}
-                            <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] pointer-events-none">
-                                <div className="absolute inset-0 bg-[conic-gradient(from_180deg_at_50%_0%,transparent_0deg,rgba(220,20,60,0.1)_20deg,rgba(220,20,60,0.2)_25deg,rgba(220,20,60,0.1)_30deg,transparent_50deg)] rotate-[155deg] blur-[30px] opacity-60" />
-                                <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-red-900/10 via-red-900/5 to-transparent blur-3xl opacity-50" />
+                            {/* Optimized Volumetric Light */}
+                            <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[400px] pointer-events-none opacity-40">
+                                <div className="absolute inset-0 bg-red-600/10 blur-[80px]" />
                             </div>
-
-                            {/* 1. Main Central Glow */}
-                            <div className="absolute top-[30%] left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-[radial-gradient(circle,rgba(220,20,60,0.15)_0%,transparent_70%)] blur-[60px] pointer-events-none" />
 
                             {/* 2. Bottom Ambient Haze */}
                             <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-[#3f0000] via-[#1a0505] to-transparent opacity-90 pointer-events-none" />
@@ -138,15 +135,15 @@ export const BetterDatabaseSection = () => {
                             <div className="relative z-10 flex justify-center gap-6 mt-20 px-8 w-full">
                                 {/* Figma Box */}
                                 <div className="relative w-20 h-20 rounded-[24px] bg-[#0f0f0f] border border-white/5 ring-1 ring-white/5 backdrop-blur-xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.8)] flex items-center justify-center">
-                                    <img src="https://cdn.simpleicons.org/figma/F24E1E" alt="Figma" className="w-10 h-10 drop-shadow-[0_0_15px_rgba(242,78,30,0.4)]" />
+                                    <img src="https://cdn.simpleicons.org/figma/F24E1E" alt="Figma" className="w-10 h-10 drop-shadow-[0_0_15px_rgba(242,78,30,0.4)]" loading="lazy" />
                                 </div>
                                 {/* Adobe (Fixed Icon) Box */}
                                 <div className="relative w-20 h-20 rounded-[24px] bg-[#0f0f0f] border border-white/5 ring-1 ring-white/5 backdrop-blur-xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.8)] flex items-center justify-center">
-                                    <img src="/src/assets/pic8 (1).png" alt="Adobe" className="w-20 h-20 object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]" />
+                                    <img src={adobeIcon} alt="Adobe" className="w-20 h-20 object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]" loading="lazy" decoding="async" />
                                 </div>
                                 {/* Framer Box */}
                                 <div className="relative w-20 h-20 rounded-[24px] bg-[#0f0f0f] border border-white/5 ring-1 ring-white/5 backdrop-blur-xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.8)] flex items-center justify-center">
-                                    <img src="https://cdn.simpleicons.org/framer/0055FF" alt="Framer" className="w-10 h-10 drop-shadow-[0_0_15px_rgba(0,85,255,0.4)]" />
+                                    <img src="https://cdn.simpleicons.org/framer/0055FF" alt="Framer" className="w-10 h-10 drop-shadow-[0_0_15px_rgba(0,85,255,0.4)]" loading="lazy" />
                                 </div>
                             </div>
 
@@ -167,28 +164,24 @@ export const BetterDatabaseSection = () => {
                             {/* Custom Texture Layer */}
                             <>
                                 <div className="absolute inset-0 
-    bg-[url('/card-texture.png')] 
     opacity-50 
     mix-blend-overlay 
     pointer-events-none"
+                                    style={{ backgroundImage: `url(${cardTexture})` }}
                                 />
                                 <div className="absolute inset-0 
-    bg-[url('/card-texture.png')] 
     opacity-5 
     mix-blend-hard-light 
     pointer-events-none"
+                                    style={{ backgroundImage: `url(${cardTexture})` }}
                                 />
                             </>
 
 
-                            {/* Volumetric Ray Light Effect */}
-                            <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] pointer-events-none">
-                                <div className="absolute inset-0 bg-[conic-gradient(from_180deg_at_50%_0%,transparent_0deg,rgba(220,20,60,0.1)_20deg,rgba(220,20,60,0.2)_25deg,rgba(220,20,60,0.1)_30deg,transparent_50deg)] rotate-[155deg] blur-[30px] opacity-60" />
-                                <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-red-900/10 via-red-900/5 to-transparent blur-3xl opacity-50" />
+                            {/* Optimized Volumetric Light */}
+                            <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[400px] pointer-events-none opacity-40">
+                                <div className="absolute inset-0 bg-red-600/10 blur-[80px]" />
                             </div>
-
-                            {/* 1. Main Central Glow */}
-                            <div className="absolute top-[30%] left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-[radial-gradient(circle,rgba(220,20,60,0.15)_0%,transparent_70%)] blur-[60px] pointer-events-none" />
 
                             {/* 2. Bottom Ambient Haze */}
                             <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-[#3f0000] via-[#1a0505] to-transparent opacity-90 pointer-events-none" />
@@ -200,15 +193,15 @@ export const BetterDatabaseSection = () => {
                             <div className="relative z-10 flex justify-center gap-6 mt-20 px-8 w-full">
                                 {/* Kali Linux Box */}
                                 <div className="relative w-20 h-20 rounded-[24px] bg-[#0f0f0f] border border-white/5 ring-1 ring-white/5 backdrop-blur-xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.8)] flex items-center justify-center">
-                                    <img src="https://cdn.simpleicons.org/kalilinux/557C94" alt="Kali" className="w-10 h-10 drop-shadow-[0_0_15px_rgba(85,124,148,0.4)]" />
+                                    <img src="https://cdn.simpleicons.org/kalilinux/557C94" alt="Kali" className="w-10 h-10 drop-shadow-[0_0_15px_rgba(85,124,148,0.4)]" loading="lazy" />
                                 </div>
                                 {/* Wireshark Box */}
                                 <div className="relative w-20 h-20 rounded-[24px] bg-[#0f0f0f] border border-white/5 ring-1 ring-white/5 backdrop-blur-xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.8)] flex items-center justify-center">
-                                    <img src="https://cdn.simpleicons.org/wireshark/1679A7" alt="Wireshark" className="w-10 h-10 drop-shadow-[0_0_15px_rgba(22,121,167,0.4)]" />
+                                    <img src="https://cdn.simpleicons.org/wireshark/1679A7" alt="Wireshark" className="w-10 h-10 drop-shadow-[0_0_15px_rgba(22,121,167,0.4)]" loading="lazy" />
                                 </div>
                                 {/* Metasploit Box */}
                                 <div className="relative w-20 h-20 rounded-[24px] bg-[#0f0f0f] border border-white/5 ring-1 ring-white/5 backdrop-blur-xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.8)] flex items-center justify-center">
-                                    <img src="https://cdn.simpleicons.org/metasploit/black" alt="Metasploit" className="w-10 h-10 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] invert" />
+                                    <img src="https://cdn.simpleicons.org/metasploit/black" alt="Metasploit" className="w-10 h-10 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] invert" loading="lazy" />
                                 </div>
                             </div>
 
@@ -234,23 +227,24 @@ export const BetterDatabaseSection = () => {
                         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05] mix-blend-overlay" />
 
                         {/* Custom Texture Layer */}
-                        <div className="absolute inset-0 bg-[url('/card-texture.png')] opacity-100 mix-blend-overlay  pointer-events-none" />
+                        <div className="absolute inset-0 opacity-100 mix-blend-overlay pointer-events-none" style={{ backgroundImage: `url(${cardTexture})` }} />
 
-                        {/* Ambient Light Ray Effect */}
-                        <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] pointer-events-none z-0 mix-blend-screen">
-                            <div className="absolute inset-0 bg-[conic-gradient(from_180deg_at_50%_0%,transparent_0deg,rgba(220,50,50,0.1)_15deg,rgba(220,50,50,0.25)_20deg,rgba(220,50,50,0.1)_25deg,transparent_40deg)] blur-[40px] opacity-70" />
-                            <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-red-600/5 via-transparent to-transparent blur-xl" />
+                        {/* Ambient Light Ray Effect (Optimized) */}
+                        <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[400px] pointer-events-none z-0 mix-blend-screen opacity-50">
+                            <div className="absolute inset-0 bg-red-600/10 blur-[60px]" />
                         </div>
 
                         {/* Red Smoke / Glow Behind Speedometer */}
-                        <div className="absolute top-[30%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(220,20,60,0.3)_0%,transparent_70%)] blur-[80px] pointer-events-none mix-blend-screen" />
+                        <div className="absolute top-[30%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-red-600/10 blur-[60px] pointer-events-none mix-blend-screen" />
 
                         {/* Speedometer Image Container */}
                         <div className="relative md:absolute top-auto md:top-[45%] left-auto md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 scale-110 w-[380px] h-[380px] flex items-center justify-center mx-auto my-10">
                             <img
-                                src="/speedometer.png"
+                                src={speedometer}
                                 alt="Speedometer"
                                 className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(255,50,50,0.4)] relative z-0"
+                                loading="lazy"
+                                decoding="async"
                             />
 
                             {/* Interactive Needle Layer */}
@@ -316,12 +310,11 @@ export const BetterDatabaseSection = () => {
                         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05] mix-blend-overlay" />
 
                         {/* Custom Texture Layer */}
-                        <div className="absolute inset-0 bg-[url('/card-texture.png')] opacity-100 mix-blend-overlay pointer-events-none" />
+                        <div className="absolute inset-0 opacity-100 mix-blend-overlay pointer-events-none" style={{ backgroundImage: `url(${cardTexture})` }} />
 
-                        {/* Ambient Light Ray Effect */}
-                        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-[600px] h-[600px] pointer-events-none z-0 mix-blend-screen">
-                            <div className="absolute inset-0 bg-[conic-gradient(from_180deg_at_40%_0%,transparent_0deg,rgba(220,50,50,0.1)_15deg,rgba(220,50,50,0.25)_20deg,rgba(240,50,50,0.1)_25deg,transparent_40deg)] blur-[30px] opacity-100" />
-                            <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-red-600/5 via-transparent to-transparent blur-xl" />
+                        {/* Ambient Light Ray Effect (Optimized) */}
+                        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-[400px] h-[400px] pointer-events-none z-0 mix-blend-screen opacity-60">
+                            <div className="absolute inset-0 bg-red-600/10 blur-[50px]" />
                         </div>
 
                         {/* Red Glow Behind Globe */}
@@ -332,9 +325,11 @@ export const BetterDatabaseSection = () => {
 
                             {/* Globe Dots Image */}
                             <img
-                                src="/globe-dots.png"
+                                src={globeDots}
                                 alt="Global Connections"
                                 className="w-[550px] h-auto object-contain opacity-100 drop-shadow-[0_0_1px_rgba(255,255,255,0.1)]"
+                                loading="lazy"
+                                decoding="async"
                             />
                         </div>
 

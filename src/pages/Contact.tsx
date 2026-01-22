@@ -1,8 +1,8 @@
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
-import { motion } from 'framer-motion';
 
-export const Contact = () => {
+
+const Contact = () => {
     return (
         <div className="bg-black min-h-screen text-white selection:bg-red-500/30 selection:text-white overflow-x-hidden flex flex-col font-sans w-full">
             <Navbar />
@@ -120,3 +120,6 @@ export const Contact = () => {
         </div>
     );
 };
+
+
+export default Contact;

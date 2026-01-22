@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import robot from '../../assets/ai-robot-v3.png';
 
 export const AISection = () => {
     return (
@@ -6,16 +7,7 @@ export const AISection = () => {
 
             {/* 1. Deep Atmosphere & Texture */}
             {/* 1. Deep Atmosphere & Texture */}
-            <div className="absolute inset-0 bg-black">
-                <video
-                    className="absolute inset-0 w-full h-full object-cover opacity-30" // Reduced opacity for pitch black feel
-                    src="/src/assets/video6 (1).mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                />
-            </div>
+
             {/* Top Fade Gradient for seamless blending */}
             <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-black to-transparent z-[1]" />
 
@@ -69,9 +61,11 @@ export const AISection = () => {
                         <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-red-600/20 blur-[100px] rounded-full pointer-events-none" />
 
                         <img
-                            src="/ai-robot-v3.png"
+                            src={robot}
                             alt="AI Applications"
                             className="relative z-10 w-full h-auto object-contain max-h-[650px] drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                            loading="lazy"
+                            decoding="async"
                         />
                     </div>
 
@@ -110,14 +104,4 @@ export const AISection = () => {
     );
 };
 
-const Label = ({ position, text, delay }: { position: string, text: string, delay: number }) => (
-    <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ delay, duration: 0.5 }}
-        className={`absolute ${position} px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md shadow-lg flex items-center space-x-2 group hover:border-primary/50 transition-colors cursor-default`}
-    >
-        <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-        <span className="text-xs font-bold text-white tracking-widest uppercase">{text}</span>
-    </motion.div>
-);
+

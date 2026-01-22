@@ -1,4 +1,4 @@
-import { ShieldCheck, Github } from 'lucide-react';
+
 
 export const TrustedSection = () => {
     return (
@@ -16,6 +16,8 @@ export const TrustedSection = () => {
                         src="/cybercom-card-v2.png"
                         alt="Cybercom"
                         className="w-full max-w-[250px] h-auto object-contain"
+                        loading="lazy"
+                        decoding="async"
                     />
                 </div>
 
@@ -33,8 +35,4 @@ export const TrustedSection = () => {
     );
 };
 
-const Card = ({ children, className }: { children: React.ReactNode, className?: string }) => (
-    <div className={`h-[250px] rounded-2xl border border-white/10 bg-surface/50 backdrop-blur-sm flex items-center justify-center p-6 hover:bg-surface/80 transition-all ${className}`}>
-        {children}
-    </div>
-);
+

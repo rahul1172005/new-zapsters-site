@@ -1,8 +1,8 @@
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
-import { motion } from 'framer-motion';
 
-export const Services = () => {
+
+const Services = () => {
     return (
         <div className="bg-black min-h-screen text-white selection:bg-red-500/30 selection:text-white overflow-x-hidden flex flex-col font-sans w-full">
             <Navbar />
@@ -41,30 +41,32 @@ export const Services = () => {
 
                             <div className="lg:col-span-8 space-y-6 md:space-y-8">
                                 {[
-                                    { title: "Full-Stack Development", tools: "React, Node.js, Next.js", desc: "Building complex web applications that feel like native software. We handle everything from the database schema to the client-side state management." },
-                                    { title: "Mobile Engineering", tools: "Swift, Kotlin, React Native", desc: "Native and cross-platform mobile apps. We obsess over 60fps animations and native platform feel." },
-                                    { title: "DevOps & Cloud", tools: "AWS, Docker, Kubernetes", desc: "Automated CI/CD pipelines and serverless infrastructure. We ensure your code ships safely and runs reliably." },
-                                    { title: "AI Integration", tools: "OpenAI, Python, PyTorch", desc: "Weaving intelligence into your products. From chatbots to predictive analytics models." },
+                                    { title: "Full-Stack Development", tools: "React, Node.js, Next.js", desc: "Building complex web applications that feel like native software. We handle everything from the database schema to the client-side state management.", price: "₹7,000 - ₹20,000" },
+                                    { title: "Mobile Engineering", tools: "Swift, Kotlin, React Native", desc: "Native and cross-platform mobile apps. We obsess over 60fps animations and native platform feel.", price: "₹15,000 - ₹30,000" },
+                                    { title: "DevOps & Cloud", tools: "AWS, Docker, Kubernetes", desc: "Automated CI/CD pipelines and serverless infrastructure. We ensure your code ships safely and runs reliably.", price: "₹10,000 - ₹30,000" },
+                                    { title: "AI Integration", tools: "OpenAI, Python, PyTorch", desc: "Weaving intelligence into your products. From chatbots to predictive analytics models.", price: "₹5,000 - ₹50,000" },
+                                    { title: "Website Vulnerability Testing", tools: "Burp Suite, OWASP ZAP", desc: "Comprehensive scanning to identify and patch security loopholes before they are exploited.", price: "₹5,000 - ₹25,000" },
+                                    { title: "Cybersecurity Services", tools: "Kali Linux, Metasploit", desc: "End-to-end security audits, penetration testing, and real-time threat monitoring.", price: "₹10,000 - ₹50,000" },
                                 ].map((service, i) => (
                                     <div key={i}
-                                        className="group relative h-auto rounded-[32px] bg-gradient-to-br from-[#080808] to-[#020202] border-[2px] border-[#0a0a0a] overflow-hidden p-8 md:p-12 shadow-2xl ring-1 ring-[#1a1a1a]/60 hover:shadow-[0_0_40px_rgba(0,0,0,0.8)] transition-all duration-500"
+                                        className="group relative h-auto rounded-[32px] bg-[#020202] border-[2px] border-[#0a0a0a] overflow-hidden p-8 md:p-12 shadow-2xl ring-1 ring-[#1a1a1a]/60 hover:shadow-[0_0_40px_rgba(0,0,0,0.8)] transition-all duration-500"
                                         style={{ boxShadow: '0 0 0 1px rgba(40,40,40,0.6), 0 0 0 2px rgba(20,20,20,0.4), 0 20px 50px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05), inset 0 2px 4px rgba(255,255,255,0.02)' }}
                                     >
                                         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
                                         {/* Dynamic Icon Layer */}
-                                        {service.icon && (
-                                            <div className="absolute top-1/2 right-4 md:right-12 -translate-y-1/2 w-24 h-24 md:w-40 md:h-40 pointer-events-none z-0 opacity-80 mix-blend-screen group-hover:scale-110 transition-transform duration-700">
-                                                <img src={service.icon} alt="Service Icon" className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(220,38,38,0.6)]" />
-                                            </div>
-                                        )}
+
 
                                         <div className="relative z-10">
                                             <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 md:mb-6">
                                                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 md:mb-0 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] group-hover:scale-105 transition-transform duration-500 origin-left">{service.title}</h3>
                                                 <span className="text-xs font-mono border border-white/20 rounded-full px-3 py-1 text-gray-400 w-fit backdrop-blur-md bg-white/5 group-hover:border-white/40 transition-colors">{service.tools}</span>
                                             </div>
-                                            <p className="text-gray-400 text-base md:text-lg leading-relaxed group-hover:text-gray-300 transition-colors">{service.desc}</p>
+                                            <p className="text-gray-400 text-base md:text-lg leading-relaxed group-hover:text-gray-300 transition-colors mb-6">{service.desc}</p>
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-sm text-white/50">Starting from</span>
+                                                <span className="text-2xl md:text-3xl font-bold text-red-500 drop-shadow-[0_0_10px_rgba(239,68,68,0.3)]">{service.price}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 ))}
@@ -87,12 +89,13 @@ export const Services = () => {
 
                             <div className="lg:col-span-8 space-y-6 md:space-y-8">
                                 {[
-                                    { title: "Product Design (UI/UX)", tools: "Figma, Principle", desc: "Crafting end-to-end user journeys. We wireframe, prototype, and polish every interaction." },
-                                    { title: "Design Systems", tools: "Storybook, Tokens", desc: "Creating a localized language of components. Ensuring consistency across every single touchpoint of your brand." },
-                                    { title: "Brand Identity", tools: "Illustrator, Motion", desc: "Logos, typography, and voice showing not just who you are, but who you aspire to be." },
+                                    { title: "Product Designing", tools: "Figma, Principle", desc: "Crafting end-to-end user journeys. We wireframe, prototype, and polish every interaction.", price: "₹5,000 - ₹25,000" },
+                                    { title: "Design Systems", tools: "Storybook, Tokens", desc: "Creating a localized language of components. Ensuring consistency across every single touchpoint of your brand.", price: "₹10,000 - ₹25,000" },
+                                    { title: "Brand Identity", tools: "Illustrator, Motion", desc: "Logos, typography, and voice showing not just who you are, but who you aspire to be.", price: "₹5,000 - ₹15,000" },
+                                    { title: "3D Modeling Services", tools: "Blender, Maya, Spline", desc: "Creating immersive 3D assets, environments, and interactive elements for next-gen web experiences.", price: "₹10,000 - ₹35,000" },
                                 ].map((service: any, i) => (
                                     <div key={i}
-                                        className="group relative h-auto rounded-[32px] bg-gradient-to-br from-[#080808] to-[#020202] border-[2px] border-[#0a0a0a] overflow-hidden p-8 md:p-12 shadow-2xl ring-1 ring-[#1a1a1a]/60 hover:shadow-[0_0_40px_rgba(0,0,0,0.8)] transition-all duration-500"
+                                        className="group relative h-auto rounded-[32px] bg-[#020202] border-[2px] border-[#0a0a0a] overflow-hidden p-8 md:p-12 shadow-2xl ring-1 ring-[#1a1a1a]/60 hover:shadow-[0_0_40px_rgba(0,0,0,0.8)] transition-all duration-500"
                                         style={{ boxShadow: '0 0 0 1px rgba(40,40,40,0.6), 0 0 0 2px rgba(20,20,20,0.4), 0 20px 50px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05), inset 0 2px 4px rgba(255,255,255,0.02)' }}
                                     >
                                         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -104,7 +107,61 @@ export const Services = () => {
                                                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 md:mb-0 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] group-hover:scale-105 transition-transform duration-500 origin-left">{service.title}</h3>
                                                 <span className="text-xs font-mono border border-white/20 rounded-full px-3 py-1 text-gray-400 w-fit backdrop-blur-md bg-white/5 group-hover:border-white/40 transition-colors">{service.tools}</span>
                                             </div>
-                                            <p className="text-gray-400 text-base md:text-lg leading-relaxed group-hover:text-gray-300 transition-colors">{service.desc}</p>
+                                            <p className="text-gray-400 text-base md:text-lg leading-relaxed group-hover:text-gray-300 transition-colors mb-6">{service.desc}</p>
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-sm text-white/50">Starting from</span>
+                                                <span className="text-2xl md:text-3xl font-bold text-red-500 drop-shadow-[0_0_10px_rgba(239,68,68,0.3)]">{service.price}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* --- PROJECT DEVELOPMENT DIVISION --- */}
+                <section className="py-20 md:py-32 border-t border-white/10 w-full">
+                    <div className="container mx-auto px-6 max-w-[1400px]">
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16">
+                            <div className="lg:col-span-4 lg:sticky lg:top-40 self-start h-fit">
+                                <span className="text-red-500 font-bold tracking-[0.2em] uppercase text-xs md:text-sm mb-4 block">Division 03</span>
+                                <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 md:mb-8 tracking-tighter">Project Development</h2>
+                                <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-8">
+                                    From academic projects to startup MVPs, we guide students and entrepreneurs through the entire development lifecycle with mentorship and technical expertise.
+                                </p>
+                                <div className="space-y-4 text-sm md:text-base">
+                                    <div className="flex items-center gap-4 text-white/50"><span className="w-2 h-2 bg-red-500 rounded-full"></span>Academic Excellence</div>
+                                    <div className="flex items-center gap-4 text-white/50"><span className="w-2 h-2 bg-red-500 rounded-full"></span>Industry Standards</div>
+                                    <div className="flex items-center gap-4 text-white/50"><span className="w-2 h-2 bg-red-500 rounded-full"></span>Mentorship Driven</div>
+                                </div>
+                            </div>
+
+                            <div className="lg:col-span-8 space-y-6 md:space-y-8">
+                                {[
+                                    { title: "Final Year Projects", tools: "Full Stack, ML/AI, IoT", desc: "Complete end-to-end development of your final year project with documentation, presentation support, and code reviews. We ensure your project stands out.", price: "₹8,000 - ₹40,000" },
+                                    { title: "Mini Projects", tools: "Web, Mobile, Desktop", desc: "Semester-based mini projects built with industry-standard tools and practices. Perfect for portfolio building and practical learning.", price: "₹5,000 - ₹15,000" },
+                                    { title: "Startup MVP Development", tools: "React, Node, Cloud", desc: "Transform your startup idea into a working prototype. We help you validate your concept quickly with a market-ready MVP.", price: "₹25,000 - ₹1,00,000" },
+                                    { title: "Technical Mentorship", tools: "1-on-1 Sessions", desc: "Personalized guidance on architecture decisions, code quality, and best practices. Get expert advice for your project journey.", price: "₹2,000 - ₹10,000/month" },
+                                    { title: "Project Documentation", tools: "Reports, PPT, Video", desc: "Professional documentation packages including project reports, presentations, demo videos, and deployment guides.", price: "₹2,000 - ₹12,000" },
+                                    { title: "Code Review & Optimization", tools: "Performance, Security", desc: "Expert review of your existing codebase with actionable feedback on performance, security, and maintainability improvements.", price: "₹3,000 - ₹20,000" },
+                                ].map((service, i) => (
+                                    <div key={i}
+                                        className="group relative h-auto rounded-[32px] bg-[#020202] border-[2px] border-[#0a0a0a] overflow-hidden p-8 md:p-12 shadow-2xl ring-1 ring-[#1a1a1a]/60 hover:shadow-[0_0_40px_rgba(0,0,0,0.8)] transition-all duration-500"
+                                        style={{ boxShadow: '0 0 0 1px rgba(40,40,40,0.6), 0 0 0 2px rgba(20,20,20,0.4), 0 20px 50px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05), inset 0 2px 4px rgba(255,255,255,0.02)' }}
+                                    >
+                                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+                                        <div className="relative z-10">
+                                            <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 md:mb-6">
+                                                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 md:mb-0 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] group-hover:scale-105 transition-transform duration-500 origin-left">{service.title}</h3>
+                                                <span className="text-xs font-mono border border-white/20 rounded-full px-3 py-1 text-gray-400 w-fit backdrop-blur-md bg-white/5 group-hover:border-white/40 transition-colors">{service.tools}</span>
+                                            </div>
+                                            <p className="text-gray-400 text-base md:text-lg leading-relaxed group-hover:text-gray-300 transition-colors mb-6">{service.desc}</p>
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-sm text-white/50">Starting from</span>
+                                                <span className="text-2xl md:text-3xl font-bold text-red-500 drop-shadow-[0_0_10px_rgba(239,68,68,0.3)]">{service.price}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 ))}
@@ -127,7 +184,7 @@ export const Services = () => {
                                 { step: "04", title: "Launch", text: "Deployment, monitoring, and scaling to millions of users." },
                             ].map((item, i) => (
                                 <div key={i}
-                                    className="relative h-full rounded-[24px] bg-gradient-to-br from-[#080808] to-[#020202] border-[2px] border-[#0a0a0a] overflow-hidden p-8 group shadow-xl ring-1 ring-[#1a1a1a]/60 hover:shadow-[0_0_40px_rgba(0,0,0,0.8)] transition-all duration-500"
+                                    className="relative h-full rounded-[24px] bg-[#020202] border-[2px] border-[#0a0a0a] overflow-hidden p-8 group shadow-xl ring-1 ring-[#1a1a1a]/60 hover:shadow-[0_0_40px_rgba(0,0,0,0.8)] transition-all duration-500"
                                     style={{ boxShadow: '0 0 0 1px rgba(40,40,40,0.6), 0 0 0 2px rgba(20,20,20,0.4), 0 20px 50px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05), inset 0 2px 4px rgba(255,255,255,0.02)' }}
                                 >
                                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-[40px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -157,3 +214,6 @@ export const Services = () => {
         </div>
     );
 };
+
+
+export default Services;

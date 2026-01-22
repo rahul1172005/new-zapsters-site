@@ -1,5 +1,7 @@
 
-import { Check, ChevronDown } from 'lucide-react';
+import { Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import logo from '../../assets/zapsters-logo.png?inline';
 
 export const Footer = () => {
     return (
@@ -9,14 +11,14 @@ export const Footer = () => {
                 {/* Brand Column */}
                 <div className="flex flex-col space-y-8 max-w-xs">
                     <div className="space-y-4">
-                        <a href="/" className="flex items-center space-x-3 group">
+                        <Link to="/" className="flex items-center space-x-3 group">
                             <img
-                                src="/zapsters-logo.png"
+                                src={logo}
                                 alt="Zapsters Logo"
                                 className="w-20 h-20 object-contain"
                             />
                             <span className="text-2xl font-bold tracking-tight text-white"></span>
-                        </a>
+                        </Link>
                         <p className="text-gray-500 text-sm">
                             A Zapsters Company
                         </p>
@@ -38,9 +40,9 @@ export const Footer = () => {
                     <div className="space-y-6">
                         <h4 className="font-bold tracking-wide text-white uppercase text-xs">COMPANY</h4>
                         <ul className="space-y-4 text-gray-400">
-                            <li><a href="#" className="hover:text-white transition-colors">About</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Service</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+                            <li><Link to="/about" className="hover:text-white transition-colors">About</Link></li>
+                            <li><Link to="/services" className="hover:text-white transition-colors">Service</Link></li>
+                            <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
                         </ul>
                     </div>
 

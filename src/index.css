@@ -5,8 +5,31 @@
 @tailwind utilities;
 
 @layer base {
+
+    html {
+        /* scroll-behavior: smooth; REMOVED FOR LENIS COMPATIBILITY */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overscroll-behavior-y: none;
+        /* Kill native bounce */
+    }
+
+    html,
     body {
         @apply bg-background text-secondary font-sans antialiased overflow-x-hidden;
+        overscroll-behavior-y: none;
+        /* Kill native bounce */
+    }
+
+    /* Performance optimizations for smooth scrolling - Selective application is better than global * reset */
+
+    /* Optimize image rendering */
+    img,
+    video {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        transform: translateZ(0);
+        will-change: transform;
     }
 }
 
@@ -16,16 +39,21 @@
     }
 
     .glass-panel {
-        @apply bg-surface/50 backdrop-blur-xl border border-white/5;
+        /* Optimized: Reduced blur amount and simplified border */
+        @apply bg-surface/50 backdrop-blur-md border border-white/5;
+        /* Hardware acceleration for glass elements */
+        transform: translateZ(0);
     }
 
     .glow-point {
-        @apply absolute rounded-full blur-[100px] opacity-20;
+        @apply absolute rounded-full blur-[60px] opacity-20;
+        will-change: transform, opacity;
     }
 
     /* Custom scrollbar for technical feel */
     ::-webkit-scrollbar {
         width: 8px;
+        height: 8px;
     }
 
     ::-webkit-scrollbar-track {

@@ -1,19 +1,23 @@
-import React from "react";
+
+
+import pic4 from '../../assets/pic4.png';
+import pic5 from '../../assets/pic5.png';
+
 
 const HeroVisual = () => {
     return (
         <section className="relative bg-black z-0 overflow-visible" style={{ minHeight: '140vh' }}>
 
-            {/* Video Background - High Quality */}
+            {/* Video Background - Optimized for Performance */}
             <video
-                className="absolute inset-0 w-full object-cover pointer-events-none"
+                className="absolute inset-0 w-full object-cover pointer-events-none will-change-transform"
                 style={{ height: '140vh' }}
-                src="/src/assets/video41.mp4"
+                src="/assets/video41.mp4"
                 autoPlay
                 loop
                 muted
                 playsInline
-                preload="auto"
+                preload="metadata"
             />
 
             {/* Gradient Overlay for Blending */}
@@ -29,6 +33,18 @@ const HeroVisual = () => {
                     EVERYTHING SITE FOR<br />
                     YOUR FUTURE
                 </h1>
+
+                <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button className="bg-red-600 text-white px-8 py-3 rounded-full text-base font-bold hover:bg-red-700 transition-all shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_30px_rgba(220,38,38,0.5)]">
+                        BOOK A DEMO
+                    </button>
+                    <button
+                        className="bg-gradient-to-br from-[#080808] to-[#020202] text-white border-[2px] border-[#0a0a0a] px-8 py-3 rounded-full text-base font-bold hover:bg-[#0a0a0a] hover:border-white/20 transition-all shadow-2xl ring-1 ring-[#1a1a1a]/60"
+                        style={{ boxShadow: '0 0 0 1px rgba(40,40,40,0.6), 0 0 0 2px rgba(20,20,20,0.4), 0 20px 50px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05), inset 0 2px 4px rgba(255,255,255,0.02)' }}
+                    >
+                        OUR SERVICES
+                    </button>
+                </div>
             </div>
 
             {/* Your Vision, Our Execution Card */}
@@ -39,9 +55,11 @@ const HeroVisual = () => {
                         {/* Background Image - pic4 (Fit Entire Image) */}
                         <div className="absolute inset-0">
                             <img
-                                src="/src/assets/pic4.png"
+                                src={pic4}
                                 alt="Background"
                                 className="w-full h-full object-contain"
+                                loading="eager"
+                                fetchPriority="high"
                             />
                         </div>
 
@@ -55,9 +73,11 @@ const HeroVisual = () => {
                                 {/* pic5 Background */}
                                 <div className="absolute inset-0">
                                     <img
-                                        src="/src/assets/pic5.png"
+                                        src={pic5}
                                         alt=""
                                         className="w-full h-full object-cover opacity-40"
+                                        loading="eager"
+                                        fetchPriority="high"
                                     />
                                 </div>
 
@@ -80,22 +100,13 @@ const HeroVisual = () => {
             </div>
 
             {/* AMBIENT RED LIGHT EFFECTS - Extended Beyond Section for Seamless Blend */}
-            <div className="absolute top-0 left-0 w-full pointer-events-none overflow-visible" style={{ height: 'calc(50% + 1vh)' }}>
-                {/* Main Vertical Light Column - Emanating from Arc Upward */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-full bg-gradient-to-t from-[rgba(220,20,60,0.2)] via-[rgba(200,30,50,0.12)] via-[rgba(180,20,40,0.08)] via-[rgba(160,20,35,0.05)] to-transparent blur-[100px]" />
+            {/* AMBIENT RED LIGHT EFFECTS - Optimized */}
+            <div className="absolute top-0 left-0 w-full pointer-events-none" style={{ height: 'calc(50% + 1vh)' }}>
+                {/* Single Combined Glow (Replacing multiple heavy blurs) */}
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-full bg-[radial-gradient(ellipse_at_bottom,rgba(220,20,60,0.15)_0%,transparent_60%)] blur-[60px]" />
 
-                {/* Wider Atmospheric Spread */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1400px] h-full bg-gradient-to-t from-[rgba(200,30,50,0.15)] via-[rgba(180,25,45,0.08)] via-[rgba(150,20,40,0.04)] to-transparent blur-[120px]" />
-
-                {/* Central Intense Glow (Near Arc) */}
-                <div className="absolute bottom-[100%] left-1/2 -translate-x-1/2 w-[800px] h-[50px] bg-[radial-gradient(ellipse_at_center,rgba(220,20,60,0.25)_0%,rgba(200,20,50,0.12)_40%,transparent_70%)] blur-[80px]" />
-
-                {/* Upper Diffused Light */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[20vh] bg-gradient-to-b from-transparent via-[rgba(180,20,40,0.03)] to-[rgba(200,25,45,0.06)] blur-[90px]" />
-
-                {/* Side Ambient Reflections - Full Height */}
-                <div className="absolute bottom-0 left-[15%] w-[500px] h-[9vh] bg-gradient-to-t from-[rgba(200,20,50,0.08)] via-[rgba(180,20,40,0.04)] to-transparent blur-[70px]" />
-                <div className="absolute bottom-0 right-[15%] w-[500px] h-[9vh] bg-gradient-to-t from-[rgba(200,20,50,0.08)] via-[rgba(180,20,40,0.04)] to-transparent blur-[70px]" />
+                {/* Central Core Glow */}
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[100px] bg-red-600/10 blur-[50px]" />
             </div>
 
 
