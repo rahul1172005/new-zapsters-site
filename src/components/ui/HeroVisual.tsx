@@ -1,7 +1,6 @@
 
-
-import pic4 from '../../assets/pic4.png';
 import pic5 from '../../assets/pic5.png';
+import { Layers, Smartphone, Bot, Palette, Rocket, GraduationCap } from 'lucide-react';
 
 
 const HeroVisual = () => {
@@ -35,64 +34,106 @@ const HeroVisual = () => {
                 </h1>
 
                 <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <button className="bg-red-600 text-white px-8 py-3 rounded-full text-base font-bold hover:bg-red-700 transition-all shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_30px_rgba(220,38,38,0.5)]">
-                        BOOK A DEMO
-                    </button>
                     <button
-                        className="bg-gradient-to-br from-[#080808] to-[#020202] text-white border-[2px] border-[#0a0a0a] px-8 py-3 rounded-full text-base font-bold hover:bg-[#0a0a0a] hover:border-white/20 transition-all shadow-2xl ring-1 ring-[#1a1a1a]/60"
+                        onClick={() => window.location.href = 'tel:+919342408432'}
+                        className="bg-red-600 text-white px-8 py-3 rounded-full text-base font-bold hover:bg-red-700 transition-all shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_30px_rgba(220,38,38,0.5)]">
+                        BOOK A FREE DEMO
+                    </button>
+                    <a
+                        href="/services"
+                        className="bg-gradient-to-br from-[#080808] to-[#020202] text-white border-[2px] border-[#0a0a0a] px-8 py-3 rounded-full text-base font-bold hover:bg-[#0a0a0a] hover:border-white/20 transition-all shadow-2xl ring-1 ring-[#1a1a1a]/60 inline-flex items-center justify-center"
                         style={{ boxShadow: '0 0 0 1px rgba(40,40,40,0.6), 0 0 0 2px rgba(20,20,20,0.4), 0 20px 50px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05), inset 0 2px 4px rgba(255,255,255,0.02)' }}
                     >
                         OUR SERVICES
-                    </button>
+                    </a>
                 </div>
             </div>
 
             {/* Your Vision, Our Execution Card */}
             <div className="relative z-10 container mx-auto px-6 mt-32">
                 <div className="max-w-6xl mx-auto">
-                    <div className="group relative h-auto md:h-[650px] min-h-[380px] rounded-[40px] overflow-hidden shadow-2xl bg-black border-[2px] border-[#0a0a0a] ring-1 ring-[#1a1a1a]/60"
-                        style={{ boxShadow: '0 0 0 1px rgba(40,40,40,0.6), 0 0 0 2px rgba(20,20,20,0.4), 0 20px 50px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 2px 4px rgba(255,255,255,0.03), inset 0 -1px 0 rgba(255,255,255,0.02)' }}>
-                        {/* Background Image - pic4 (Fit Entire Image) */}
-                        <div className="absolute inset-0">
-                            <img
-                                src={pic4}
-                                alt="Background"
-                                className="w-full h-full object-contain"
-                                loading="eager"
-                                fetchPriority="high"
-                            />
-                        </div>
+                    <div className="group relative h-auto md:h-[650px] min-h-[380px] rounded-[40px] overflow-hidden shadow-2xl bg-gradient-to-b from-black to-red-900/20 border-[2px] border-red-900/30 ring-1 ring-red-500/10"
+                        style={{ boxShadow: '0 0 0 1px rgba(220, 38, 38, 0.3), 0 0 0 2px rgba(0,0,0,0.4), 0 20px 50px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.1), inset 0 2px 4px rgba(255,255,255,0.05)' }}>
 
-                        {/* Left-Aligned Content Card Container */}
-                        <div className="relative z-10 w-full h-full p-8 md:p-12 flex items-center justify-start">
-                            {/* Content Card - Left Side (Matching Site Style) */}
-                            <div className="relative rounded-[32px] bg-[#020202] border-[2px] border-[#0a0a0a] p-8 md:p-12 max-w-xl shadow-2xl ring-1 ring-[#1a1a1a]/60 overflow-hidden"
-                                style={{
-                                    boxShadow: '0 0 0 1px rgba(40,40,40,0.6), 0 0 0 2px rgba(20,20,20,0.4), 0 20px 50px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 2px 4px rgba(255,255,255,0.03), inset 0 -1px 0 rgba(255,255,255,0.02)'
-                                }}>
-                                {/* pic5 Background */}
-                                <div className="absolute inset-0">
-                                    <img
-                                        src={pic5}
-                                        alt=""
-                                        className="w-full h-full object-cover opacity-40"
-                                        loading="eager"
-                                        fetchPriority="high"
-                                    />
-                                </div>
 
-                                {/* Content */}
-                                <div className="relative text-left">
-                                    <h3 className="text-4xl md:text-5xl font-bold leading-[1.1] mb-6 tracking-tight">
-                                        <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-100 to-gray-300 drop-shadow-[0_4px_20px_rgba(255,255,255,0.3)]">
-                                            Your Vision,<br />
-                                            Our Execution
-                                        </span>
-                                    </h3>
-                                    <p className="text-lg md:text-xl text-white/90 font-medium tracking-wide drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
-                                        Transforming ideas into reality with cutting-edge technology and innovative solutions.
-                                    </p>
-                                </div>
+                        {/* Full Width Grid Container for Services */}
+                        <div className="relative z-10 w-full h-full p-6 md:p-10 flex items-center justify-center">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full h-full">
+                                {[
+                                    {
+                                        title: "Full-Stack Dev",
+                                        icon: Layers,
+                                        price: "₹4,999 - ₹19,999",
+                                        desc: "Web apps acting like native software.",
+                                        points: ["Custom React/Next.js Architecture", "Secure Database Integration", "High-Performance API Design", "SEO Optimized Structure"]
+                                    },
+                                    {
+                                        title: "Mobile Engineering",
+                                        icon: Smartphone,
+                                        price: "₹14,999 - ₹29,999",
+                                        desc: "Cross-platform apps with 60fps feel.",
+                                        points: ["iOS & Android Deployment", "Native Performance Optimization", "Offline-First Capabilities", "Advanced Gestures & Animations"]
+                                    },
+                                    {
+                                        title: "AI Integration",
+                                        icon: Bot,
+                                        price: "₹4,999 - ₹49,999",
+                                        desc: "Smart chatbots & predictive models.",
+                                        points: ["Custom LLM Training", "Automated Customer Support", "Predictive Analytics Models", "Seamless API Integration"]
+                                    },
+                                    {
+                                        title: "Product Designing",
+                                        icon: Palette,
+                                        price: "₹4,999 - ₹24,999",
+                                        desc: "UI/UX wireframes and prototypes.",
+                                        points: ["User Research & Personas", "Wireframing & Prototyping", "Design System Creation", "Interaction Design (Framer)"]
+                                    },
+                                    {
+                                        title: "Startup MVP",
+                                        icon: Rocket,
+                                        price: "₹24,999 - ₹99,999",
+                                        desc: "Rapid prototype to market-ready product.",
+                                        points: ["Rapid Prototyping", "Scalable Cloud Infrastructure", "Go-to-Market Strategy", "Investor-Ready Documentation"]
+                                    },
+                                    {
+                                        title: "Final Year Projects",
+                                        icon: GraduationCap,
+                                        price: "₹7,999 - ₹39,999",
+                                        desc: "End-to-end academic project support.",
+                                        points: ["Complete Source Code", "Detailed Documentation (PPT/Report)", "Viva/Presentation Support", "1-on-1 Code Explanation"]
+                                    },
+                                ].map((service, i) => (
+                                    <div key={i}
+                                        className="group/card relative h-full rounded-[24px] bg-[#020202]/90 backdrop-blur-md border-[2px] border-[#0a0a0a] overflow-hidden p-6 flex flex-col shadow-xl ring-1 ring-[#1a1a1a]/60 hover:shadow-[0_0_30px_rgba(220,38,38,0.15)] hover:border-red-900/30 transition-all duration-500"
+                                        style={{ boxShadow: '0 0 0 1px rgba(40,40,40,0.6), 0 0 0 2px rgba(20,20,20,0.4), 0 20px 50px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05), inset 0 2px 4px rgba(255,255,255,0.02)' }}
+                                    >
+                                        <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-[40px] pointer-events-none opacity-0 group-hover/card:opacity-100 transition-opacity duration-700" />
+
+                                        <div className="relative z-10 mb-4">
+                                            <div className="flex items-center gap-3 mb-2">
+                                                <service.icon className="w-6 h-6 text-red-500" />
+                                                <h4 className="text-white font-bold text-xl md:text-2xl group-hover/card:text-red-500 transition-colors drop-shadow-md">{service.title}</h4>
+                                            </div>
+                                            <p className="text-gray-400 text-xs leading-relaxed">{service.desc}</p>
+                                        </div>
+
+                                        <div className="relative z-10 border-t border-white/10 pt-3 pb-4">
+                                            <span className="text-[10px] text-white/40 uppercase tracking-[0.2em] font-bold block mb-1">Starts @</span>
+                                            <span className="text-red-500 font-bold font-mono text-xl drop-shadow-[0_0_10px_rgba(220,38,38,0.4)]">{service.price}</span>
+                                        </div>
+
+                                        <div className="relative z-10 mt-auto">
+                                            <ul className="space-y-2">
+                                                {service.points.map((point, idx) => (
+                                                    <li key={idx} className="flex items-start gap-2 text-sm text-gray-300">
+                                                        <span className="text-red-500 mt-1 text-[10px]">◇</span>
+                                                        <span>{point}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>

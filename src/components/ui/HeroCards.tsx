@@ -49,7 +49,7 @@ export const HeroCards = () => {
                             </div>
                             <div className="flex-1">
                                 <p className="text-lg md:text-xl text-gray-400 font-light leading-relaxed">
-                                    <strong className="text-white font-bold">Zapsters</strong> was born from a singular obsession: perfection. We realized that most digital agencies were stuck in the past building websites when they should be building ecosystems, designing pages when they should be crafting experiences.
+                                    <strong className="text-white font-bold">Zapsters</strong> Zapsters was born from a singular obsession: perfection. While others built websites, we built technology ecosystems. While others designed pages, we engineered intelligent digital experiences. Because the future isn’t built on design alone     , it’s built on technology, innovation, and vision.
                                 </p>
                             </div>
                         </div>
@@ -173,7 +173,7 @@ export const HeroCards = () => {
 
                         {/* Metric & Switch - Middle Left */}
                         <div className="relative md:absolute top-auto md:top-[8rem] left-6 md:left-10 z-30 flex items-center space-x-5 mt-4 md:mt-0 px-6 md:px-0">
-                            <span className="text-7xl md:text-[96px] font-medium text-white tracking-tighter leading-none drop-shadow-xl" style={{ fontVariantNumeric: 'tabular-nums' }}>99%</span>
+                            <span className="text-7xl md:text-[96px] font-medium text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-400 tracking-tighter leading-none drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]" style={{ fontVariantNumeric: 'tabular-nums' }}>100%</span>
                         </div>
 
                         {/* Bottom Glass Panel - Bottom Left (Frosty Glass) */}
@@ -188,7 +188,7 @@ export const HeroCards = () => {
                                 {/* Status Header */}
                                 <div className="flex items-center space-x-2 z-10">
 
-                                    <span className="text-white/60 text-xs font-medium tracking-wide">System Optimized</span>
+                                    <span className="text-white/60 text-xs font-medium tracking-wide">Always Active</span>
                                 </div>
 
                                 {/* Tech Visual: Active Waveform */}

@@ -105,7 +105,8 @@ export const FeatureGrid = () => {
 
                             {/* Widget 1: Contact (Black Style) */}
                             <div
-                                className="relative z-10 w-[140px] h-[140px] bg-[#050505] border-[2px] border-[#0a0a0a] ring-1 ring-[#1a1a1a]/60 rounded-[32px] p-4 flex flex-col justify-between shadow-xl"
+                                onClick={() => window.location.href = '/contact'}
+                                className="relative z-10 w-[140px] h-[140px] bg-[#050505] border-[2px] border-[#0a0a0a] ring-1 ring-[#1a1a1a]/60 rounded-[32px] p-4 flex flex-col justify-between shadow-xl cursor-pointer hover:border-white/20 transition-all duration-300"
                             >
                                 <div className="flex justify-between items-start">
                                     <span className="text-white text-[15px] font-semibold tracking-normal font-sans">Contact</span>

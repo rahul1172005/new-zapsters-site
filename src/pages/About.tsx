@@ -138,8 +138,8 @@ const About = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20">
                         <div className="flex flex-col h-full">
                             <h2 className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-400 drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)] tracking-tight mb-4 md:mb-6 flex-shrink-0">
-                                In an age of digital noise, <br />
-                                <span className="text-gray-500">we design the signal.</span>
+                                Where technology <br />
+                                <span className="text-gray-500">meets ambition.</span>
                             </h2>
 
                             {/* Signal/Noise Visual Card - Adapts to Text Height */}
@@ -156,13 +156,13 @@ const About = () => {
                         </div>
                         <div className="space-y-6 md:space-y-8 text-lg md:text-xl text-gray-400 font-light leading-relaxed">
                             <p>
-                                <strong className="text-white font-bold">Zapsters Agency</strong> was born from a singular obsession: perfection. We realized that most digital agencies were stuck in the past—building websites when they should be building ecosystems, designing pages when they should be crafting experiences.
+                                <strong className="text-white font-bold">Zapsters</strong> was founded with a clear belief: digital presence should be engineered, not assembled. While others focus on surface-level design, we go deeper building powerful technology stacks, future-ready platforms, and experiences designed for scale.
                             </p>
                             <p>
-                                We operate at the intersection of heavy engineering and high-fashion aesthetics. We believe that B2B software doesn't have to be boring, and that corporate websites should feel like cinematic masterpieces.
+                                Our work blends precision engineering, cinematic UI/UX, and next-generation technologies to create digital products that don’t just look exceptional they perform exceptionally.
                             </p>
                             <p>
-                                Our team is a collective of outliers—engineers who love art, and designers who understand code. Together, we are redefining what it means to be a digital agency in the 21st century.
+                                For us, every project is a system. Every system is built to lead
                             </p>
                         </div>
                     </div>
@@ -179,7 +179,7 @@ const About = () => {
                             <div className="relative z-10">
                                 <span className="text-6xl md:text-9xl font-bold text-white tracking-tighter block mb-4 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] group-hover:scale-105 transition-transform duration-500 origin-left">1+</span>
                                 <span className="text-sm md:text-xl text-gray-400 uppercase tracking-widest group-hover:text-white transition-colors">Years of Innovation</span>
-                                <p className="mt-6 md:mt-8 text-sm md:text-base text-gray-500 max-w-md group-hover:text-gray-400 transition-colors">Decades of combined experience pushing the boundaries of what's possible on the web.</p>
+                                <p className="mt-6 md:mt-8 text-sm md:text-base text-gray-500 max-w-md group-hover:text-gray-400 transition-colors">Combined experience pushing the boundaries of what's possible on the Tech.</p>
                             </div>
                         </div>
 
@@ -190,7 +190,7 @@ const About = () => {
                             <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-[60px] -translate-y-1/2 translate-x-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                             <div className="relative z-10 flex flex-col justify-between h-full">
                                 <div>
-                                    <span className="text-4xl md:text-6xl font-bold text-white tracking-tighter block mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:scale-105 transition-transform duration-500 origin-left">₹4Lakh+</span>
+                                    <span className="text-4xl md:text-6xl font-bold text-white tracking-tighter block mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:scale-105 transition-transform duration-500 origin-left">₹15Lakh+</span>
                                     <span className="text-xs md:text-sm text-gray-400 uppercase tracking-widest group-hover:text-white transition-colors">Client Value Created</span>
                                 </div>
                             </div>
@@ -204,7 +204,7 @@ const About = () => {
                             <div className="relative z-10 flex flex-col justify-between h-full">
                                 <div>
                                     <span className="text-4xl md:text-6xl font-bold text-white tracking-tighter block mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:scale-105 transition-transform duration-500 origin-left">20+</span>
-                                    <span className="text-xs md:text-sm text-gray-400 uppercase tracking-widest group-hover:text-white transition-colors">Global Partners</span>
+                                    <span className="text-xs md:text-sm text-gray-400 uppercase tracking-widest group-hover:text-white transition-colors">Clients</span>
                                 </div>
                             </div>
                         </div>
@@ -217,7 +217,7 @@ const About = () => {
                             <div className="relative z-10">
                                 <span className="text-6xl md:text-9xl font-bold text-white tracking-tighter block mb-4 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] group-hover:scale-105 transition-transform duration-500 origin-left">100%</span>
                                 <span className="text-sm md:text-xl text-gray-400 uppercase tracking-widest group-hover:text-white transition-colors">Client Retention</span>
-                                <p className="mt-6 md:mt-8 text-sm md:text-base text-gray-500 max-w-md group-hover:text-gray-400 transition-colors">We don't just build projects; we build lifelong partnerships with our clients.</p>
+                                <p className="mt-6 md:mt-8 text-sm md:text-base text-gray-500 max-w-md group-hover:text-gray-400 transition-colors">We don't just build projects, we build lifelong partnerships with our clients.</p>
                             </div>
                         </div>
                     </div>
@@ -251,6 +251,11 @@ const About = () => {
                                             <p className="text-gray-300 text-sm leading-relaxed font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 bg-black/60 backdrop-blur-sm p-3 rounded-lg">
                                                 Bridging the gap between scalable engineering and minimalist art to set a new standard for digital ecosystems.
                                             </p>
+                                            <div className="pt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                                                <a href="https://www.linkedin.com/in/sabari-raja-5a4464330/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs font-bold text-white hover:text-red-500 transition-colors uppercase tracking-wider">
+                                                    LinkedIn <span className="text-[10px]">↗</span>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -273,8 +278,13 @@ const About = () => {
                                             <h3 className="text-2xl font-bold text-white tracking-tight mb-1">Rahul</h3>
                                             <p className="text-red-500 text-xs font-mono uppercase tracking-widest mb-4">Co-Founder & CTO</p>
                                             <p className="text-gray-300 text-sm leading-relaxed font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 bg-black/60 backdrop-blur-sm p-3 rounded-lg">
-                                                Architect of the invisible. Ensuring every interaction is powered by robust, cutting-edge AI and seamless infrastructure.
+                                                Architects of the invisible. Forging the systems behind the signal. Powered by technology. Designed for scale. Built to lead.
                                             </p>
+                                            <div className="pt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                                                <a href="https://www.linkedin.com/in/rahul-r-31b107381/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs font-bold text-white hover:text-red-500 transition-colors uppercase tracking-wider">
+                                                    LinkedIn <span className="text-[10px]">↗</span>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -299,6 +309,11 @@ const About = () => {
                                             <p className="text-gray-300 text-sm leading-relaxed font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 bg-black/60 backdrop-blur-sm p-3 rounded-lg">
                                                 The strategist of value. Aligning financial vision with market presence to build systems that sustain long-term success.
                                             </p>
+                                            <div className="pt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                                                <a href="https://www.linkedin.com/in/praveen-s-321019368/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs font-bold text-white hover:text-red-500 transition-colors uppercase tracking-wider">
+                                                    LinkedIn <span className="text-[10px]">↗</span>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

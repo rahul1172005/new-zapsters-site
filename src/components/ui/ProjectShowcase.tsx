@@ -5,59 +5,66 @@ import { LazyImage } from '../LazyImage';
 const projects = [
     {
         id: "01",
-        title: "Keyshop",
-        category: "E-Commerce",
-        gradient: "group-hover:from-red-900/90",
-        image: "https://images.unsplash.com/photo-1642132652075-2d4343701830?q=80&w=3000&auto=format&fit=crop",
-        description: "Instant delivery marketplace. High-volume transaction handling with crypto payment rails and automated key dispatch systems."
+        title: "Vishal Key Shop",
+        client: "Santhosh",
+        category: "Locksmith Services",
+        gradient: "group-hover:from-yellow-900/90",
+        image: "/assets/projects/keyshop.png",
+        description: "One call for every key & lock you own. From duplicate house keys to advanced car key programming and smart lock setups."
     },
     {
         id: "02",
-        title: "Nivora",
+        title: "TOT",
+        client: "Sabari & Team",
         category: "Hospitality",
         gradient: "group-hover:from-orange-900/90",
-        image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=2874&auto=format&fit=crop",
-        description: "Immersive culinary platform. Features 4K visual storytelling, real-time table reservation engine, and dynamic seasonal menus."
+        image: "/assets/projects/tot.png",
+        description: "Craving something delicious? Taste of Trio's brings you the tastiest dishes, curated from the best chefs and local favorites."
     },
     {
         id: "03",
-        title: "ShelterLink",
-        category: "Non-Profit",
-        gradient: "group-hover:from-pink-900/90",
-        image: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=2969&auto=format&fit=crop",
-        description: "AI-powered adoption network. Matching families with pets using behavioral analysis and seamless application workflows."
+        title: "Primal Training",
+        client: "Vignesh",
+        category: "Fitness",
+        gradient: "group-hover:from-lime-900/90",
+        image: "/assets/projects/dreamgym.png",
+        description: "Train hard. Live better. Train like an athlete with top-tier equipment and expert programming."
     },
     {
         id: "04",
-        title: "Construct",
-        category: "Corporate",
-        gradient: "group-hover:from-yellow-900/90",
-        image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2940&auto=format&fit=crop",
-        description: "Infrastructure visualization. Interactive 3D renderings of massive engineering projects with safety compliance dashboards."
+        title: "PAWShome",
+        client: "Hemanth",
+        category: "Pet Lifestyle",
+        gradient: "group-hover:from-orange-900/90",
+        image: "/assets/projects/pawshop.png",
+        description: "Find your dream pet or a new best friend. Discover adoption, pet hosting, and lifestyle services."
     },
     {
         id: "05",
-        title: "Cortex",
-        category: "AI Systems",
+        title: "SVBM",
+        client: "Praveen",
+        category: "Construction",
         gradient: "group-hover:from-blue-900/90",
-        image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2865&auto=format&fit=crop",
-        description: "Predictive ML models. Computer vision for security systems and NLP bots for automated customer support."
+        image: "/assets/projects/svbm.png",
+        description: "Premium quality blue metals, aggregates, and construction materials for infrastructure projects across India."
     },
     {
         id: "06",
-        title: "Flux UI",
-        category: "Design System",
-        gradient: "group-hover:from-purple-900/90",
-        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2864&auto=format&fit=crop",
-        description: "Pixel-perfect interface kit. Prioritizing accessibility, motion physics, and consistency across efficient web platforms."
+        title: "RAD",
+        client: "Ranjith",
+        category: "AI Analysis",
+        gradient: "group-hover:from-sky-900/90",
+        image: "/assets/projects/rad.png",
+        description: "Requirement Ambiguity Detector. AI-driven analysis to identify vague software requirements and prevent costly development errors."
     },
     {
         id: "07",
-        title: "TestFlow",
-        category: "QA",
-        gradient: "group-hover:from-emerald-900/90",
-        image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=2728&auto=format&fit=crop",
-        description: "Automated testing pipelines. End-to-end and unit testing frameworks ensuring zero-tolerance for mission-critical bugs."
+        title: "CorpAnalytics",
+        client: "Hema Shree",
+        category: "Business Intelligence",
+        gradient: "group-hover:from-indigo-900/90",
+        image: "/assets/projects/corpanalytics.png",
+        description: "Next-generation business intelligence for modern enterprises. Monitor performance, forecast trends, and drive decision-making with precision."
     }
 ];
 
@@ -240,6 +247,11 @@ const ProjectCard = ({ project }: { project: any }) => {
                     {/* Category Tag */}
                     <div className="inline-block px-3 py-1 mb-5 text-[10px] font-mono font-bold text-red-500 uppercase tracking-widest border border-red-900/30 rounded-full bg-red-900/10">
                         {project.category}
+                    </div>
+
+                    {/* Client Name */}
+                    <div className="text-red-500 text-xs font-mono uppercase tracking-widest mb-2 font-bold opacity-80">
+                        {project.client}
                     </div>
 
                     {/* Title */}

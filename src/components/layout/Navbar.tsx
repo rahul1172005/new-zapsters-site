@@ -29,12 +29,17 @@ export const Navbar = () => {
                     <Link to="/contact" className="hover:text-red-500 transition-colors">Contact</Link>
                 </div>
 
-                {/* Right Actions */}
-                <div className="hidden md:flex items-center space-x-6">
-                    <button className="text-sm font-medium hover:text-white transition-colors text-gray-400">Log In</button>
-                    <button className="bg-red-600 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-red-700 transition-colors">
-                        Sign Up
-                    </button>
+                <div className="hidden md:flex items-center space-x-4">
+                    <a href="tel:+919342408432">
+                        <button className="border border-white/20 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-white hover:text-black transition-colors uppercase tracking-widest">
+                            Call Us
+                        </button>
+                    </a>
+                    <Link to="/join">
+                        <button className="bg-red-600 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-red-700 transition-colors uppercase tracking-widest">
+                            Join ZAPSTERS
+                        </button>
+                    </Link>
                 </div>
 
                 <button
@@ -69,12 +74,16 @@ export const Navbar = () => {
                         </div>
 
                         <div className="mt-auto mb-12 space-y-6">
-                            <button className="w-full text-lg text-gray-400 font-medium hover:text-white transition-colors py-4">
-                                Log In
-                            </button>
-                            <button className="w-full bg-red-600 text-white py-4 rounded-full text-lg font-bold hover:bg-red-700 transition-colors shadow-[0_0_20px_rgba(220,38,38,0.3)]">
-                                Sign Up
-                            </button>
+                            <a href="tel:+919342408432" onClick={() => setIsMobileMenuOpen(false)}>
+                                <button className="w-full border border-white/20 text-white py-4 rounded-full text-lg font-bold hover:bg-white hover:text-black transition-colors uppercase tracking-widest">
+                                    Call Us
+                                </button>
+                            </a>
+                            <Link to="/join" onClick={() => setIsMobileMenuOpen(false)}>
+                                <button className="w-full bg-red-600 text-white py-4 rounded-full text-lg font-bold hover:bg-red-700 transition-colors shadow-[0_0_20px_rgba(220,38,38,0.3)] uppercase tracking-widest">
+                                    Join ZAPSTERS
+                                </button>
+                            </Link>
                         </div>
                     </motion.div>
                 )}

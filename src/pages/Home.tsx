@@ -11,9 +11,12 @@ const AISection = lazy(() => import('../components/ui/AISection').then(module =>
 const ProjectShowcase = lazy(() => import('../components/ui/ProjectShowcase').then(module => ({ default: module.ProjectShowcase })));
 const TrustedSection = lazy(() => import('../components/ui/TrustedSection').then(module => ({ default: module.TrustedSection })));
 
+import { WelcomePopup } from '../components/ui/WelcomePopup';
+
 const Home = () => {
     return (
         <div className="bg-background min-h-screen text-white selection:bg-primary/30 selection:text-white overflow-x-hidden">
+            <WelcomePopup />
             <Navbar />
             <HeroVisual />
             <HeroCards />

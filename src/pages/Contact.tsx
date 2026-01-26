@@ -2,7 +2,62 @@ import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 
 
+import { useState } from 'react';
+
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        fullName: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: '',
+        budget: '',
+        projectScope: [] as string[]
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleScopeChange = (tag: string) => {
+        setFormData(prev => {
+            const scope = prev.projectScope.includes(tag)
+                ? prev.projectScope.filter(t => t !== tag)
+                : [...prev.projectScope, tag];
+            return { ...prev, projectScope: scope };
+        });
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setStatus('idle');
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) throw new Error('Failed to submit');
+
+            setStatus('success');
+            setFormData({ fullName: '', email: '', phone: '', subject: '', message: '', budget: '', projectScope: [] });
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            setStatus('error');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
     return (
         <div className="bg-black min-h-screen text-white selection:bg-red-500/30 selection:text-white overflow-x-hidden flex flex-col font-sans w-full">
             <Navbar />
@@ -44,7 +99,7 @@ const Contact = () => {
                                     <div>
                                         <h4 className="text-xs md:text-sm font-bold text-white uppercase tracking-widest mb-2 md:mb-4">Connect</h4>
                                         <div className="flex flex-col gap-2">
-                                            <a href="https://www.instagram.com/zapsters" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-red-500 transition-colors">Instagram ↗</a>
+                                            <a href="https://www.instagram.com/zapster_25/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-red-500 transition-colors">Instagram ↗</a>
                                             <a href="http://linkedin.com/company/zapsters-inc" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-red-500 transition-colors">LinkedIn ↗</a>
                                         </div>
                                     </div>
@@ -59,17 +114,52 @@ const Contact = () => {
                         >
                             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none opacity-50" />
                             <div className="relative z-10">
-                                <form className="space-y-12 md:space-y-16">
+                                <form onSubmit={handleSubmit} className="space-y-12 md:space-y-16">
                                     <div className="space-y-6 md:space-y-8">
                                         <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">01. Your Details</h3>
                                         <div className="relative group">
-                                            <input type="text" placeholder="Full Name" className="w-full bg-transparent border-b border-white/20 py-4 md:py-6 text-lg md:text-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-red-500 transition-colors" />
+                                            <input
+                                                type="text"
+                                                name="fullName"
+                                                value={formData.fullName}
+                                                onChange={handleChange}
+                                                placeholder="Full Name"
+                                                required
+                                                className="w-full bg-transparent border-b border-white/20 py-4 md:py-6 text-lg md:text-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-red-500 transition-colors"
+                                            />
                                         </div>
                                         <div className="relative group">
-                                            <input type="email" placeholder="Email Address" className="w-full bg-transparent border-b border-white/20 py-4 md:py-6 text-lg md:text-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-red-500 transition-colors" />
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                value={formData.email}
+                                                onChange={handleChange}
+                                                placeholder="Email Address"
+                                                required
+                                                className="w-full bg-transparent border-b border-white/20 py-4 md:py-6 text-lg md:text-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-red-500 transition-colors"
+                                            />
                                         </div>
                                         <div className="relative group">
-                                            <input type="text" placeholder="Company / Organization" className="w-full bg-transparent border-b border-white/20 py-4 md:py-6 text-lg md:text-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-red-500 transition-colors" />
+                                            <input
+                                                type="tel"
+                                                name="phone"
+                                                value={formData.phone}
+                                                onChange={handleChange}
+                                                placeholder="Phone Number"
+                                                required
+                                                className="w-full bg-transparent border-b border-white/20 py-4 md:py-6 text-lg md:text-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-red-500 transition-colors"
+                                            />
+                                        </div>
+                                        <div className="relative group">
+                                            <input
+                                                type="text"
+                                                name="subject"
+                                                value={formData.subject}
+                                                onChange={handleChange}
+                                                placeholder="Subject"
+                                                required
+                                                className="w-full bg-transparent border-b border-white/20 py-4 md:py-6 text-lg md:text-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-red-500 transition-colors"
+                                            />
                                         </div>
                                     </div>
 
@@ -78,7 +168,12 @@ const Contact = () => {
                                         <div className="flex flex-wrap gap-3 md:gap-4">
                                             {['Web Development', 'Mobile App', 'UI/UX Design', 'Branding', 'Strategy', 'AI Integration'].map((tag) => (
                                                 <label key={tag} className="cursor-pointer">
-                                                    <input type="checkbox" className="hidden peer" />
+                                                    <input
+                                                        type="checkbox"
+                                                        className="hidden peer"
+                                                        checked={formData.projectScope.includes(tag)}
+                                                        onChange={() => handleScopeChange(tag)}
+                                                    />
                                                     <span className="inline-block px-4 py-2 md:px-6 md:py-3 rounded-full border border-white/20 text-sm md:text-base text-gray-400 peer-checked:bg-white peer-checked:text-black peer-checked:font-bold transition-all hover:border-white backdrop-blur-sm bg-white/5">
                                                         {tag}
                                                     </span>
@@ -90,9 +185,16 @@ const Contact = () => {
                                     <div className="space-y-6 md:space-y-8">
                                         <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">03. Budget</h3>
                                         <div className="flex flex-wrap gap-3 md:gap-4">
-                                            {['< ₹10 Lakh', '₹10L - ₹50L', '₹50L - ₹2 Cr', '₹2 Cr +'].map((tag) => (
+                                            {['₹2,000 - ₹10,000', '₹10,000 - ₹30,000', '₹30,000 - ₹50,000', '₹50,000 - ₹1,00,000', '₹1,00,000+'].map((tag) => (
                                                 <label key={tag} className="cursor-pointer">
-                                                    <input type="radio" name="budget" className="hidden peer" />
+                                                    <input
+                                                        type="radio"
+                                                        name="budget"
+                                                        value={tag}
+                                                        checked={formData.budget === tag}
+                                                        onChange={handleChange}
+                                                        className="hidden peer"
+                                                    />
                                                     <span className="inline-block px-4 py-2 md:px-6 md:py-3 rounded-full border border-white/20 text-sm md:text-base text-gray-400 peer-checked:bg-red-500 peer-checked:text-white peer-checked:border-red-500 peer-checked:font-bold transition-all hover:border-white backdrop-blur-sm bg-white/5">
                                                         {tag}
                                                     </span>
@@ -103,12 +205,25 @@ const Contact = () => {
 
                                     <div className="space-y-6 md:space-y-8">
                                         <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">04. The Vision</h3>
-                                        <textarea placeholder="Tell us about your project..." className="w-full bg-transparent border-b border-white/20 py-4 md:py-6 text-lg md:text-xl text-white placeholder:text-white/20 focus:outline-none focus:border-red-500 transition-colors h-32 md:h-40 resize-none"></textarea>
+                                        <textarea
+                                            name="message"
+                                            value={formData.message}
+                                            onChange={handleChange}
+                                            placeholder="Tell us about your project..."
+                                            required
+                                            className="w-full bg-transparent border-b border-white/20 py-4 md:py-6 text-lg md:text-xl text-white placeholder:text-white/20 focus:outline-none focus:border-red-500 transition-colors h-32 md:h-40 resize-none"
+                                        ></textarea>
                                     </div>
 
-                                    <button type="button" className="w-full bg-red-600 text-white font-bold text-xl md:text-2xl py-6 md:py-8 rounded-full hover:bg-red-700 transition-colors uppercase tracking-[0.2em] shadow-[0_0_30px_rgba(220,38,38,0.4)]">
-                                        Send Proposal
+                                    <button
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                        className="w-full bg-red-600 text-white font-bold text-xl md:text-2xl py-6 md:py-8 rounded-full hover:bg-red-700 transition-colors uppercase tracking-[0.2em] shadow-[0_0_30px_rgba(220,38,38,0.4)] disabled:opacity-50 disabled:cursor-not-allowed"
+                                    >
+                                        {isSubmitting ? 'Sending...' : 'Send Proposal'}
                                     </button>
+                                    {status === 'success' && <p className="text-white text-center text-lg mt-4 font-bold tracking-wide">Message sent successfully!</p>}
+                                    {status === 'error' && <p className="text-red-500 text-center text-lg mt-4 font-bold tracking-wide">Failed to send message. Please try again.</p>}
                                 </form>
                             </div>
                         </div>

@@ -19,81 +19,81 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
     {
         id: "01",
-        name: "Marcus Chen",
-        role: "Founder & CEO",
-        company: "Keyshop",
-        category: "E-Commerce",
-        content: "ZAPSTERS built our instant delivery marketplace from the ground up. The high-volume transaction handling with crypto payment rails and automated key dispatch systems they implemented is absolutely flawless. Our platform processes thousands of transactions daily without a hitch.",
+        name: "Santhosh",
+        role: "Owner",
+        company: "Vishal Key Shop",
+        category: "Locksmith Services",
+        content: "ZAPSTERS transformed our local business. The 'one call' digital solution streamlined our dispatch for house keys and complex car programming. Customers now find us instantly and trust our secure services.",
         rating: 5,
-        image: "https://images.unsplash.com/photo-1642132652075-2d4343701830?q=80&w=3000&auto=format&fit=crop",
-        gradient: "group-hover:from-red-900/90"
+        image: "/assets/projects/keyshop.png",
+        gradient: "group-hover:from-yellow-900/90"
     },
     {
         id: "02",
-        name: "Isabella Rossi",
-        role: "Creative Director",
-        company: "Nivora",
+        name: "Sabari & Team",
+        role: "Management",
+        company: "TOT",
         category: "Hospitality",
-        content: "The immersive culinary platform ZAPSTERS created for us is a masterpiece. The 4K visual storytelling, real-time table reservation engine, and dynamic seasonal menus have transformed how our guests experience fine dining. It's not just a website—it's an experience.",
+        content: "Taste of Trio's needed a platform that matched the quality of our food. ZAPSTERS delivered a stunning showcase for our dishes that has significantly engaged our local food lovers.",
         rating: 5,
-        image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=2874&auto=format&fit=crop",
+        image: "/assets/projects/tot.png",
         gradient: "group-hover:from-orange-900/90"
     },
     {
         id: "03",
-        name: "Dr. Sarah Mitchell",
-        role: "Executive Director",
-        company: "ShelterLink",
-        category: "Non-Profit",
-        content: "ZAPSTERS' AI-powered adoption network has revolutionized our mission. The behavioral analysis matching system and seamless application workflows have increased our successful adoptions by 250%. They truly understood our vision and brought it to life.",
+        name: "Vignesh",
+        role: "Founder",
+        company: "Primal Training",
+        category: "Fitness",
+        content: "Train hard, live better. ZAPSTERS captured our philosophy perfectly in digital form. Our members love the professional look and the seamless integration of our training programs.",
         rating: 5,
-        image: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=2969&auto=format&fit=crop",
-        gradient: "group-hover:from-pink-900/90"
+        image: "/assets/projects/dreamgym.png",
+        gradient: "group-hover:from-lime-900/90"
     },
     {
         id: "04",
-        name: "James Thornton",
-        role: "Chief Engineer",
-        company: "Construct",
-        category: "Corporate",
-        content: "The infrastructure visualization platform with interactive 3D renderings that ZAPSTERS delivered exceeded all expectations. Our massive engineering projects now have real-time safety compliance dashboards that have improved our operational efficiency dramatically.",
+        name: "Hemanth",
+        role: "Owner",
+        company: "PAWShome",
+        category: "Pet Lifestyle",
+        content: "Finding the perfect pet is an emotional journey. ZAPSTERS created a beautiful, easy-to-use platform that connects families with their new best friends effectively and compassionately.",
         rating: 5,
-        image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2940&auto=format&fit=crop",
-        gradient: "group-hover:from-yellow-900/90"
+        image: "/assets/projects/pawshop.png",
+        gradient: "group-hover:from-orange-900/90"
     },
     {
         id: "05",
-        name: "Dr. Aisha Patel",
-        role: "Head of AI Research",
-        company: "Cortex",
-        category: "AI Systems",
-        content: "ZAPSTERS built our predictive ML models with exceptional precision. The computer vision for security systems and NLP bots for automated customer support are industry-leading. Their technical expertise in AI systems is unmatched.",
+        name: "Praveen",
+        role: "Operations Head",
+        company: "SVBM",
+        category: "Construction",
+        content: "In infrastructure, reliability is everything. ZAPSTERS built a robust platform that showcases our premium materials and project history with the professional weight our clients expect.",
         rating: 5,
-        image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2865&auto=format&fit=crop",
+        image: "/assets/projects/svbm.png",
         gradient: "group-hover:from-blue-900/90"
     },
     {
         id: "06",
-        name: "Oliver Bennett",
-        role: "Lead Designer",
-        company: "Flux UI",
-        category: "Design System",
-        content: "Working with ZAPSTERS on our pixel-perfect interface kit was incredible. They prioritized accessibility, motion physics, and consistency across all platforms. The design system they created is now the foundation of our entire product suite.",
+        name: "Ranjith",
+        role: "",
+        company: "RAD",
+        category: "AI Analysis",
+        content: "The Requirement Ambiguity Detector is a breakthrough. ZAPSTERS' implementation of AI-driven analysis allows us to catch specification errors early, saving millions in development costs.",
         rating: 5,
-        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2864&auto=format&fit=crop",
-        gradient: "group-hover:from-purple-900/90"
+        image: "/assets/projects/rad.png",
+        gradient: "group-hover:from-sky-900/90"
     },
     {
         id: "07",
-        name: "Rachel Kim",
-        role: "VP of Quality Assurance",
-        company: "TestFlow",
-        category: "QA",
-        content: "The automated testing pipelines ZAPSTERS developed for us are a game-changer. Their end-to-end and unit testing frameworks ensure zero-tolerance for mission-critical bugs. Our deployment confidence has never been higher.",
+        name: "Hema Shree",
+        role: "",
+        company: "CorpAnalytics",
+        category: "Business Intelligence",
+        content: "Next-generation BI requires next-generation design. ZAPSTERS delivered a dashboard interface that makes complex data forecasting and performance monitoring intuitive for our enterprise clients.",
         rating: 5,
-        image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=2728&auto=format&fit=crop",
-        gradient: "group-hover:from-emerald-900/90"
-    },
+        image: "/assets/projects/corpanalytics.png",
+        gradient: "group-hover:from-indigo-900/90"
+    }
 ];
 
 
