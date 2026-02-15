@@ -88,7 +88,7 @@ export const WelcomePopup = () => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={handleClose}
-                        className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+                        className="absolute inset-0 bg-black/80"
                     />
 
                     {/* Modal Content */}
@@ -96,7 +96,7 @@ export const WelcomePopup = () => {
                         initial={{ scale: 0.9, opacity: 0, y: 20 }}
                         animate={{ scale: 1, opacity: 1, y: 0 }}
                         exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                        className="relative bg-[#0a0a0a] border border-white/10 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl"
+                        className="relative bg-[#0a0a0a] metal-stroke rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl"
                     >
                         {/* Close Button */}
                         <button

@@ -7,11 +7,11 @@ export default {
     theme: {
         extend: {
             colors: {
-                background: '#040404',        // Deepest black for main background
+                background: '#FFFFFF',        // Pure white for main background
                 surface: '#0C0C0C',           // Slightly lighter for cards
                 primary: '#00E599',           // Neon Mint Green
                 'primary-hover': '#00CC88',   // Slightly darker mint
-                secondary: '#F0F0F5',         // White/Grey for text
+                secondary: '#1A1A1A',         // Dark for text on white bg
                 muted: '#9CA3AF',            // Muted gray for subtext
                 border: '#1F1F1F',           // Subtle borders
                 'neon-blue': '#00C2FF',       // For gradients/accents

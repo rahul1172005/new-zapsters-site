@@ -100,24 +100,24 @@ const AdminDashboard = () => {
     };
 
     return (
-        <div className="min-h-screen bg-black text-white font-sans selection:bg-red-500/30 selection:text-white">
+        <div className="min-h-screen bg-white text-black font-sans selection:bg-red-500/30 selection:text-white">
             <Navbar />
 
             <div className="pt-32 pb-20 px-6 container mx-auto max-w-[1600px]">
                 {/* Header Section */}
-                <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 border-b border-white/10 pb-8">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 border-b border-black/5 pb-8">
                     <div>
-                        <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-500 mb-2">
+                        <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-black to-gray-700 mb-2">
                             Command Center
                         </h1>
-                        <p className="text-gray-400 text-lg">Manage inquiries and client relationships.</p>
+                        <p className="text-gray-500 text-lg">Manage inquiries and client relationships.</p>
                     </div>
                 </div>
 
                 {/* KPI Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                    <div className="bg-[#050505] border-[2px] border-[#0a0a0a] rounded-[24px] p-6 relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="bg-[#050505] metal-stroke rounded-[24px] p-6 relative overflow-hidden group">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="relative z-10 flex justify-between items-start">
                             <div>
                                 <p className="text-gray-500 text-sm font-bold uppercase tracking-widest mb-2">Total Inquiries</p>
@@ -127,8 +127,8 @@ const AdminDashboard = () => {
                         </div>
                     </div>
 
-                    <div className="bg-[#050505] border-[2px] border-[#0a0a0a] rounded-[24px] p-6 relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/10 rounded-full blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="bg-[#050505] metal-stroke rounded-[24px] p-6 relative overflow-hidden group">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="relative z-10 flex justify-between items-start">
                             <div>
                                 <p className="text-gray-500 text-sm font-bold uppercase tracking-widest mb-2">Pending Actions</p>
@@ -138,8 +138,8 @@ const AdminDashboard = () => {
                         </div>
                     </div>
 
-                    <div className="bg-[#050505] border-[2px] border-[#0a0a0a] rounded-[24px] p-6 relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="bg-[#050505] metal-stroke rounded-[24px] p-6 relative overflow-hidden group">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="relative z-10 flex justify-between items-start">
                             <div>
                                 <p className="text-gray-500 text-sm font-bold uppercase tracking-widest mb-2">Replied</p>
@@ -155,8 +155,8 @@ const AdminDashboard = () => {
                     <button
                         onClick={() => setActiveTab('all')}
                         className={`px-6 py-3 rounded-full text-sm font-bold transition-all ${activeTab === 'all'
-                            ? 'bg-white text-black'
-                            : 'bg-[#0a0a0a] text-gray-500 border border-[#2a2a2a] hover:text-white'
+                            ? 'bg-black text-white'
+                            : 'bg-black/5 text-gray-500 border border-black/5 hover:text-black'
                             }`}
                     >
                         All Inquiries
@@ -164,8 +164,8 @@ const AdminDashboard = () => {
                     <button
                         onClick={() => setActiveTab('proposals')}
                         className={`px-6 py-3 rounded-full text-sm font-bold transition-all ${activeTab === 'proposals'
-                            ? 'bg-white text-black'
-                            : 'bg-[#0a0a0a] text-gray-500 border border-[#2a2a2a] hover:text-white'
+                            ? 'bg-black text-white'
+                            : 'bg-black/5 text-gray-500 border border-black/5 hover:text-black'
                             }`}
                     >
                         Project Proposals
@@ -173,8 +173,8 @@ const AdminDashboard = () => {
                     <button
                         onClick={() => setActiveTab('consultations')}
                         className={`px-6 py-3 rounded-full text-sm font-bold transition-all ${activeTab === 'consultations'
-                            ? 'bg-red-600 text-white'
-                            : 'bg-[#0a0a0a] text-gray-500 border border-[#2a2a2a] hover:text-white'
+                            ? 'bg-red-600 text-white shadow-lg shadow-red-500/20'
+                            : 'bg-black/5 text-gray-500 border border-black/5 hover:text-black'
                             }`}
                     >
                         Free Consultations
@@ -307,7 +307,7 @@ const AdminDashboard = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+                            className="absolute inset-0 bg-black/80"
                             onClick={() => setSelectedSubmission(null)}
                         />
 

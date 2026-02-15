@@ -21,7 +21,7 @@ export const LazyVideo = ({ src, poster, threshold = 0.1, ...props }: LazyVideoP
             },
             {
                 threshold: 0,
-                rootMargin: '3000px' // Start loading 3000px BEFORE element is visible
+                rootMargin: '500px' // Start loading 500px BEFORE element is visible
             }
         );
 
@@ -66,7 +66,7 @@ export const LazyVideo = ({ src, poster, threshold = 0.1, ...props }: LazyVideoP
 
             {/* Loading indicator */}
             {isVisible && !isLoaded && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+                <div className="absolute inset-0 flex items-center justify-center bg-black/50">
                     <div className="w-12 h-12 border-4 border-white/10 border-t-red-600 rounded-full animate-spin"></div>
                 </div>
             )}

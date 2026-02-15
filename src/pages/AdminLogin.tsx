@@ -36,15 +36,14 @@ const AdminLogin = () => {
     };
 
     return (
-        <div className="min-h-screen bg-black text-white flex items-center justify-center p-6">
+        <div className="min-h-screen bg-white text-black flex items-center justify-center p-6">
             <div
-                className="max-w-md w-full bg-[#050505] border-[2px] border-[#0a0a0a] rounded-[32px] p-8 md:p-12 shadow-2xl ring-1 ring-[#1a1a1a]/60 relative overflow-hidden"
-                style={{ boxShadow: '0 0 0 1px rgba(40,40,40,0.6), 0 0 0 2px rgba(20,20,20,0.4), 0 20px 50px rgba(0,0,0,0.9)' }}
+                className="max-w-md w-full bg-[#050505] metal-stroke rounded-[32px] p-8 md:p-12 shadow-2xl relative overflow-hidden"
             >
-                <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none opacity-50" />
+                <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none opacity-50" />
 
                 <div className="relative z-10">
-                    <h2 className="text-3xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400">Admin Access</h2>
+                    <h2 className="text-3xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-b from-black to-gray-700">Admin Access</h2>
 
                     {error && <p className="text-red-500 text-center mb-4">{error}</p>}
 

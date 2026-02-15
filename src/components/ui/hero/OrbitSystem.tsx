@@ -18,7 +18,7 @@ const OrbitWrapper = ({ radius, duration, reverse, initialAngle, children }: any
         >
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 <motion.div
-                    className="flex items-center justify-center w-10 h-10 rounded-full bg-mufi-card border border-white/10 backdrop-blur-md shadow-lg"
+                    className="flex items-center justify-center w-10 h-10 rounded-full bg-mufi-card border border-white/20"
                     animate={{ rotate: reverse ? 360 : -360 }}
                     transition={{ duration, ease: "linear", repeat: Infinity }}
                 >
@@ -36,9 +36,9 @@ export const OrbitSystem = () => {
             <div className="absolute inset-0 bg-radial-gradient from-mufi-accent-purple/20 to-transparent opacity-50" />
 
             {/* Center Glowing Logo - Adjusted to match image (Pink/Red Gradient Block) */}
-            <div className="relative z-10 w-20 h-20 rounded-2xl shadow-[0_0_60px_rgba(255,75,75,0.4)] flex items-center justify-center transform rotate-0 hover:scale-105 transition-transform duration-500">
+            <div className="relative z-10 w-20 h-20 rounded-2xl border border-white/20 flex items-center justify-center transform rotate-0 hover:scale-105 transition-transform duration-500">
                 {/* The actual logo block */}
-                <div className="w-full h-full rounded-2xl bg-gradient-to-br from-[#FF8080] via-[#FF4D4D] to-[#A020F0] flex items-center justify-center relative overflow-hidden border-t border-white/40 shadow-inner">
+                <div className="w-full h-full rounded-2xl bg-gradient-to-br from-[#FF8080] via-[#FF4D4D] to-[#A020F0] flex items-center justify-center relative overflow-hidden border-t border-white/40">
                     {/* Inner gloss */}
                     <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent opacity-60" />
                     {/* Logo Icon */}

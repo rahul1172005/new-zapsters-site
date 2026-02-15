@@ -9,7 +9,7 @@ export const LoadingSpinner = () => {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-red-600 rounded-full animate-pulse"></div>
 
                 {/* Glow effect */}
-                <div className="absolute inset-0 blur-xl bg-red-600/20 rounded-full animate-pulse"></div>
+                <div className="absolute inset-0 bg-red-600/20 rounded-full animate-pulse"></div>
             </div>
 
             {/* Loading text */}

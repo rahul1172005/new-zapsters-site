@@ -29,7 +29,7 @@ export const FeatureCard = ({ className, children, delay = 0 }: FeatureCardProps
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay }}
             className={cn(
-                "relative overflow-hidden rounded-3xl border border-white/10 p-6 backdrop-blur-3xl",
+                "relative overflow-hidden rounded-3xl p-6 metal-stroke",
                 "bg-gradient-to-br from-[#1E1128]/90 via-[#0D0512]/90 to-[#050505]/95", // Much stronger dark purple/black base
                 "shadow-[0_0_0_1px_rgba(255,255,255,0.05)_inset]", // Inner light border
                 className

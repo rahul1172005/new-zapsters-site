@@ -22,7 +22,7 @@ export const Navbar = () => {
                 </div>
 
                 {/* Centered Nav Links */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex items-center space-x-8 text-sm font-semibold text-black">
                     <Link to="/about" className="hover:text-red-500 transition-colors">About</Link>
                     <Link to="/services" className="hover:text-red-500 transition-colors">Services</Link>
                     <Link to="/testimonials" className="hover:text-red-500 transition-colors">Testimonials</Link>
@@ -31,7 +31,7 @@ export const Navbar = () => {
 
                 <div className="hidden md:flex items-center space-x-4">
                     <a href="tel:+919342408432">
-                        <button className="border border-white/20 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-white hover:text-black transition-colors uppercase tracking-widest">
+                        <button className="border border-black/20 text-black px-6 py-2.5 rounded-full text-sm font-bold hover:bg-black hover:text-white transition-colors uppercase tracking-widest">
                             Call Us
                         </button>
                     </a>
@@ -43,7 +43,7 @@ export const Navbar = () => {
                 </div>
 
                 <button
-                    className="md:hidden text-white z-50 p-2 hover:bg-white/10 rounded-full transition-colors"
+                    className="md:hidden text-black z-50 p-2 hover:bg-black/5 rounded-full transition-colors"
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 >
                     {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -54,11 +54,11 @@ export const Navbar = () => {
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className="fixed inset-0 z-40 bg-[#050505]/95 backdrop-blur-3xl pt-32 px-6 md:hidden flex flex-col"
+                        className="fixed inset-0 z-40 bg-white pt-32 px-6 md:hidden flex flex-col"
                     >
                         <div className="flex flex-col space-y-8">
                             {['About', 'Services', 'Testimonials', 'Contact'].map((item) => (
@@ -66,7 +66,7 @@ export const Navbar = () => {
                                     key={item}
                                     to={`/${item.toLowerCase()}`}
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-400 hover:to-red-500 transition-all border-b border-white/5 pb-4"
+                                    className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-black to-gray-700 hover:to-red-500 transition-all border-b border-black/5 pb-4"
                                 >
                                     {item}
                                 </Link>
@@ -75,12 +75,12 @@ export const Navbar = () => {
 
                         <div className="mt-auto mb-12 space-y-6">
                             <a href="tel:+919342408432" onClick={() => setIsMobileMenuOpen(false)}>
-                                <button className="w-full border border-white/20 text-white py-4 rounded-full text-lg font-bold hover:bg-white hover:text-black transition-colors uppercase tracking-widest">
+                                <button className="w-full border border-black/20 text-black py-4 rounded-full text-lg font-bold hover:bg-black hover:text-white transition-colors uppercase tracking-widest">
                                     Call Us
                                 </button>
                             </a>
                             <Link to="/join" onClick={() => setIsMobileMenuOpen(false)}>
-                                <button className="w-full bg-red-600 text-white py-4 rounded-full text-lg font-bold hover:bg-red-700 transition-colors shadow-[0_0_20px_rgba(220,38,38,0.3)] uppercase tracking-widest">
+                                <button className="w-full bg-red-600 text-white py-4 rounded-full text-lg font-bold hover:bg-red-700 transition-colors border border-red-500/20 uppercase tracking-widest">
                                     Join ZAPSTERS
                                 </button>
                             </Link>
