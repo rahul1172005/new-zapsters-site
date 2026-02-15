@@ -1,10 +1,9 @@
-import { useState } from 'react';
+
+
 import { motion } from 'framer-motion';
-import { LazyVideo } from '../LazyVideo';
-import { SoundDeck } from './SoundDeck';
 
 export const HeroCards = () => {
-    const [activePoint, setActivePoint] = useState('Leadership');
+    // State removed as it was unused
 
     return (
         <section className="py-0 relative z-10 bg-white">
