@@ -37,7 +37,7 @@ export default defineConfig({
                     'react-vendor': ['react', 'react-dom', 'react-router-dom'],
                     'animation-vendor': ['framer-motion', 'lenis'],
                     'ui-vendor': ['lucide-react', 'react-icons'],
-                    'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
+                    'three-vendor': ['three'],
                 },
                 assetFileNames: (assetInfo) => {
                     const name = assetInfo.name || '';
