@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { auth } from '../lib/firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const AdminLogin = () => {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -17,21 +19,12 @@ const AdminLogin = () => {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await fetch('/api/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password }),
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                localStorage.setItem('adminToken', data.token);
-                navigate('/admin/dashboard');
-            } else {
-                setError('Invalid credentials');
-            }
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const token = await userCredential.user.getIdToken();
+            localStorage.setItem('adminToken', token);
+            navigate('/admin/dashboard');
         } catch (err: any) {
-            setError('Login failed');
+            setError('Invalid credentials or login failed');
         }
     };
 
@@ -49,13 +42,13 @@ const AdminLogin = () => {
 
                     <form onSubmit={handleLogin} className="space-y-6">
                         <div className="space-y-2">
-                            <label className="text-sm text-gray-400 ml-1">Username</label>
+                            <label className="text-sm text-gray-400 ml-1">Email</label>
                             <input
-                                type="text"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 className="w-full bg-transparent border-b border-white/20 py-3 text-lg text-white placeholder:text-white/10 focus:outline-none focus:border-red-500 transition-colors"
-                                placeholder="Admin Username"
+                                placeholder="Admin Email"
                                 required
                             />
                         </div>

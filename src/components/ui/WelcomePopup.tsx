@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import { db } from '../../lib/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 export const WelcomePopup = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -50,15 +52,13 @@ export const WelcomePopup = () => {
         setIsSubmitting(true);
 
         try {
-            await fetch('/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    ...formData,
-                    subject: 'Welcome Popup Submission', // Distinguish source
-                    projectScope: formData.interest,
-                    budget: 'Not Specified' // Default
-                }),
+            await addDoc(collection(db, 'contacts'), {
+                ...formData,
+                subject: 'Welcome Popup Submission',
+                projectScope: JSON.stringify(formData.interest),
+                budget: 'Not Specified',
+                status: 'new',
+                createdAt: serverTimestamp()
             });
 
             setSubmitted(true);

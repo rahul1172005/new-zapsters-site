@@ -3,7 +3,8 @@ import { Footer } from '../components/layout/Footer';
 
 
 import { useState } from 'react';
-
+import { db } from '../lib/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 const Contact = () => {
     const [formData, setFormData] = useState({
         fullName: '',
@@ -39,15 +40,12 @@ const Contact = () => {
         setStatus('idle');
 
         try {
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
+            await addDoc(collection(db, 'contacts'), {
+                ...formData,
+                status: 'new',
+                createdAt: serverTimestamp(),
+                projectScope: JSON.stringify(formData.projectScope)
             });
-
-            if (!response.ok) throw new Error('Failed to submit');
 
             setStatus('success');
             setFormData({ fullName: '', email: '', phone: '', subject: '', message: '', budget: '', projectScope: [] });

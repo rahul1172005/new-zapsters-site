@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Filter, Trash2, CheckCircle, MessageSquare, Activity, Users, Clock, AlertCircle } from 'lucide-react';
-
+import { db, auth } from '../lib/firebase';
+import { collection, getDocs, updateDoc, doc, deleteDoc, query, orderBy } from 'firebase/firestore';
+import { signOut } from 'firebase/auth';
 const AdminDashboard = () => {
     const [submissions, setSubmissions] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
@@ -21,58 +23,61 @@ const AdminDashboard = () => {
             return;
         }
 
-        fetch('/api/admin/submissions', {
-            headers: { 'Authorization': `Bearer ${token}` }
-        })
-            .then(res => {
-                if (res.status === 401 || res.status === 403) {
-                    localStorage.removeItem('adminToken');
-                    navigate('/admin/login');
-                    throw new Error('Unauthorized');
-                }
-                return res.json();
-            })
-            .then(data => {
+        const fetchSubmissions = async () => {
+            try {
+                const q = query(collection(db, 'contacts'), orderBy('createdAt', 'desc'));
+                const querySnapshot = await getDocs(q);
+                const data = querySnapshot.docs.map(document => {
+                    const docData = document.data();
+                    return {
+                        id: document.id,
+                        ...docData,
+                        createdAt: docData.createdAt?.toDate ? docData.createdAt.toDate().toISOString() : new Date().toISOString()
+                    };
+                });
                 setSubmissions(data);
                 setLoading(false);
-            })
-            .catch(err => {
+            } catch (err) {
                 console.error(err);
+                if ((err as Error).message.includes('permission-denied')) {
+                    localStorage.removeItem('adminToken');
+                    navigate('/admin/login');
+                }
                 setLoading(false);
-            });
+            }
+        };
+
+        fetchSubmissions();
     }, [navigate]);
 
-    const handleLogout = () => {
+    const handleLogout = async () => {
+        try { await signOut(auth); } catch (error) { }
         localStorage.removeItem('adminToken');
         navigate('/admin/login');
     };
 
     const updateStatus = async (id: string, newStatus: string) => {
-        const token = localStorage.getItem('adminToken');
-        await fetch(`/api/admin/submissions/${id}/status`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({ status: newStatus })
-        });
-
-        setSubmissions(prev => prev.map(sub => sub.id === id ? { ...sub, status: newStatus } : sub));
-        if (selectedSubmission && selectedSubmission.id === id) {
-            setSelectedSubmission({ ...selectedSubmission, status: newStatus });
+        try {
+            const submissionRef = doc(db, 'contacts', id);
+            await updateDoc(submissionRef, { status: newStatus });
+            setSubmissions(prev => prev.map(sub => sub.id === id ? { ...sub, status: newStatus } : sub));
+            if (selectedSubmission && selectedSubmission.id === id) {
+                setSelectedSubmission({ ...selectedSubmission, status: newStatus });
+            }
+        } catch (error) {
+            console.error("Error updating status: ", error);
         }
     };
 
     const handleDelete = async (id: string) => {
         if (window.confirm('Permanent delete? This action cannot be undone.')) {
-            const token = localStorage.getItem('adminToken');
-            await fetch(`/api/admin/submissions/${id}`, {
-                method: 'DELETE',
-                headers: { 'Authorization': `Bearer ${token}` }
-            });
-            setSubmissions(prev => prev.filter(sub => sub.id !== id));
-            if (selectedSubmission?.id === id) setSelectedSubmission(null);
+            try {
+                await deleteDoc(doc(db, 'contacts', id));
+                setSubmissions(prev => prev.filter(sub => sub.id !== id));
+                if (selectedSubmission?.id === id) setSelectedSubmission(null);
+            } catch (error) {
+                console.error("Error deleting document: ", error);
+            }
         }
     };
 
